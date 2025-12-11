@@ -306,12 +306,12 @@ body {
 /* --- Media Query for smaller screens --- */
 @media (max-width: 768px) {
     .title {
-        font-size: 15vw;
+        font-size: 18vw;
         letter-spacing: 0;
         line-height: 1;
     }
     .tagline {
-        font-size: 1.2rem;
+        font-size: 0.9rem;
     }
     .header {
         padding: 0 15px;
