@@ -69,9 +69,13 @@ body {
     right: 0;
 }
 
-.logo {
-    font-size: 18px;
-    font-weight: bold;
+.nav-logo img {
+    height: 50px;
+    width: auto;
+}
+.nav-logo:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1);
 }
 
 .icons a, .menu-button {
