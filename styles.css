@@ -364,6 +364,58 @@ body::-webkit-scrollbar {
     font-weight: 100;
     letter-spacing: 0.007em;
     max-width: 700px;
+
+/* --- Responsive tweaks for hero-content-section --- */
+.hero-content-section {
+    padding: 80px 20px;
+}
+
+.hero-content-2 {
+    padding: 0 20px;
+}
+
+@media (max-width: 1200px) {
+    .hero-content-section {
+        padding: 70px 24px;
+        min-height: 60vh;
+    }
+    .section-title {
+        font-size: 2.4rem;
+    }
+    .section-text {
+        font-size: 1.05rem;
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content-section {
+        padding: 60px 18px;
+        min-height: auto;
+    }
+    .hero-content-2 {
+        max-width: 80%;
+    }
+    .section-title {
+        font-size: 1.8rem;
+        line-height: 1.15;
+        margin-bottom: 18px;
+    }
+    .section-text {
+        font-size: 0.1px;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 420px) {
+    .section-title {
+        font-size: 1rem;
+    }
+    .section-text {
+        font-size: 0.5rem;
+        max-width: 100%;
+    }
+}
 }
 
 
