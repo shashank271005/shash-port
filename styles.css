@@ -174,12 +174,22 @@ body::-webkit-scrollbar {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     filter: none; 
 }
+.title::selection {
+    color: #23c8ff;
+    /* background: rgba(49, 49, 49, 0.2);  */
+
+}
 
 .tagline {
     font-family: "Google Sans", "Google Sans Text", "Google Symbols", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 4rem;
     font-weight: 300;
     margin-bottom: 5px;
+}
+
+.tagline::selection {
+    color: #23c8ff;
+
 }
 
 .hero-2 {
@@ -202,6 +212,11 @@ body::-webkit-scrollbar {
     margin-top: 0.9px;
 }
 
+.hero-2::selection {
+    color: #23c8ff;
+
+}
+
 
 .cta-button {
     background-color: var(--glass-background);
@@ -220,6 +235,11 @@ body::-webkit-scrollbar {
 .cta-button:hover {
     background-color: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cta-button::selection {
+    color: #23c8ff;
+
 }
 
 
@@ -353,6 +373,10 @@ body::-webkit-scrollbar {
     color: #b6b6b6;
     margin-bottom: 30px;
     letter-spacing: -0.02em;
+}
+.section-title::selection {
+    color: #23c8ff;
+
 }
 
 .section-text {
