@@ -2,22 +2,70 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // --- 1. PLAYLIST DATA ---
     const playlist = [
         {
-            title: "In Demand",
-            artist: "Manni Sandhu, Navean Sandhu",
-            audioSrc: "audio/InDemand.mp3",
-            albumArtSrc: "https://hdbc7y0gj1.ucarecd.net/14056887-fb2e-4aaa-9eda-e5c8497d411b/indemendalbumart.svg"
+            title: "Comethru",
+            artist: "Jeremy Zucker",
+            audioSrc: "audio/track1.mp3",
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/6638e53c-d780-4c0d-ab33-37a33a86ec78/comethrualnumcover.jpg"
         },
         {
-            title: "Track 2: Summer Vibes",
-            artist: "The Developers",
-            audioSrc: "audio/track2.mp3", // Ensure you have this file
-            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/a1e56573-aaf1-4348-989f-a6cf835d04f1/Untitleddesign.svg" // Placeholder image
+            title: "Ordinary",
+            artist: "Alex Warren",
+            audioSrc: "audio/track2.mp3",
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/cc49ae98-7fe0-4577-aa52-182f42de1c76/ab67616d00001e0242fe69c0e7e5c92f01ece8ce.jpeg" 
         },
         {
-            title: "Track 3: Code Flow",
-            artist: "Creative Crew",
-            audioSrc: "audio/track3.mp3", // Ensure you have this file
-            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/3e8f3bce-6211-4178-86c3-6f6e95274a83/c699c918cf736e8efeaa6c55b031ef6d.jpg" // Placeholder image
+            title: "I Warned Myself",
+            artist: "Charlie Puth",
+            audioSrc: "audio/track3.mp3", 
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/bea1ea1f-fd03-4c22-b5cf-13c647b584b4/1200x630bf60.jpg" 
+        },
+        {
+            title: "I Like Me Better",
+            artist: "Lauv",
+            audioSrc: "audio/track4.mp3", 
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/ee615889-0d08-497b-a387-35a7af980c51/ILikeMeBetterEnglish201720191202143751500x500.jpg" 
+        },
+        {
+            title: "Monster",
+            artist: "Justin Bieber & Shawn Mendes",
+            audioSrc: "audio/track5.mp3", 
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/d0f97bfc-35c7-4956-aa42-ffe42aabe1dd/Shawn_Mendes_and_Justin_Bieber__Monster.png" 
+        },
+        {
+            title: "Espresso",
+            artist: "Sabrina Carpenter",
+            audioSrc: "audio/track6.mp3", 
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/ecde8135-1763-407b-9d0b-33f00bb3b63a/EspressoEnglish202420240412064803500x500.jpg" 
+        },
+        {
+            title: "Beautiful Things",
+            artist: "Benson Boone",
+            audioSrc: "audio/track7.mp3", 
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/340997ed-ea08-494c-9b27-7a8aa2676ea8/BeautifulThingsEnglish202420240404023143500x500.jpg" 
+        },
+        {
+            title: "Living Hell",
+            artist: "Bella Poarch",
+            audioSrc: "audio/track8.mp3", 
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/ef31e45c-3fb0-4278-acc1-1f7333e5659c/DollsEPEnglish202220220809070445500x500.jpg" 
+        },
+        {
+            title: "Worth It",
+            artist: "Fifth Harmony ft. Kid Ink",
+            audioSrc: "audio/track9.mp3", 
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/48a1b16a-0f36-43e1-8123-6fe9dfb1a4f9/WorthItEnglish2015500x500.jpg" 
+        },
+        {
+            title: "7 rings",
+            artist: "Ariana Grande",
+            audioSrc: "audio/track10.mp3", 
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/36c43b18-5107-428c-90b5-787e135b9a78/thankunextEnglish201920231215000717500x500.jpg" 
+        },
+        {
+            title: "Hey Mama",
+            artist: "David Guetta",
+            audioSrc: "audio/track11.mp3", 
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/91c03e11-ecb6-4497-828f-4eb1361918e4/0e5ce9fa46148e0464e3376d2d060f11.jpg" 
         }
         // Add more tracks here following the same object structure
     ];
@@ -89,14 +137,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const nextButton = document.getElementById('next-button');
     const previousButton = document.getElementById('previous-button');
     
-    // Helper function to format seconds to M:SS
+
     const formatTime = (seconds) => {
         const min = Math.floor(seconds / 60);
         const sec = Math.floor(seconds % 60).toString().padStart(2, '0');
         return `${min}:${sec}`;
     };
 
-    // Load track information and source into the player
+
     const loadTrack = (index) => {
         const track = playlist[index];
         
@@ -107,7 +155,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         audioPlayer.src = track.audioSrc;
         audioPlayer.load(); 
         
-        playPauseIcon.src = 'img/play.svg'; // Reset icon to play
+        playPauseIcon.src = 'img/play.svg'; 
     };
 
     const playNextTrack = () => {
@@ -127,9 +175,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     const playPreviousTrack = () => {
         if (isShuffling) {
-            playNextTrack(); // For shuffle, Previous can just be another random track
+            playNextTrack(); 
         } else {
-            // If track is already playing for > 3 seconds, restart it. Otherwise, go to previous track.
+
             if (audioPlayer.currentTime > 3) {
                 audioPlayer.currentTime = 0;
             } else {
@@ -143,10 +191,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // --- Event Listeners ---
 
-    // Initialize player with the first track
     loadTrack(currentTrackIndex); 
     
-    // Toggle player visibility
+
     if (toggleButton && playerContainer) {
         toggleButton.addEventListener('click', () => {
             const isOpen = playerContainer.classList.toggle('is-open');
@@ -154,7 +201,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // Play/Pause functionality
     if (audioPlayer && playPauseButton) {
         playPauseButton.addEventListener('click', () => {
             if (audioPlayer.paused) {
@@ -167,7 +213,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // Next/Previous/Shuffle
     if (nextButton) {
         nextButton.addEventListener('click', playNextTrack);
     }
@@ -184,7 +229,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // Loop functionality
+
     if (loopButton) {
         loopButton.addEventListener('click', () => {
             audioPlayer.loop = !audioPlayer.loop;
@@ -192,7 +237,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // Metadata loading (to set duration)
     audioPlayer.onloadedmetadata = () => {
         if (!isNaN(audioPlayer.duration)) {
             totalDurationSpan.textContent = formatTime(audioPlayer.duration);
@@ -200,7 +244,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     };
 
-    // Time update (to update progress bar and current time)
+
     audioPlayer.ontimeupdate = () => {
         if (!isNaN(audioPlayer.duration)) {
             progressBar.value = audioPlayer.currentTime;
@@ -208,12 +252,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     };
 
-    // User seeking (scrubbing)
     progressBar.addEventListener('input', () => {
         audioPlayer.currentTime = progressBar.value;
     });
-    
-    // Autoplay next track when current one ends
+
     audioPlayer.addEventListener('ended', () => {
         if (!audioPlayer.loop) {
             playNextTrack();
