@@ -297,6 +297,9 @@ body::-webkit-scrollbar {
     visibility: hidden;
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
     text-decoration: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .menu-panel.is-open {
@@ -316,6 +319,9 @@ body::-webkit-scrollbar {
     align-items: center;
     text-decoration: none;
     gap: 12px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* .menu-item:hover {
