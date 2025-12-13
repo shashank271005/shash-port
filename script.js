@@ -25,4 +25,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
     }
+    const scrollContainer = document.getElementById('poster-scroll-container');
+    
+    if (scrollContainer) {
+        scrollContainer.addEventListener('scroll', () => {
+            const cards = scrollContainer.querySelectorAll('.poster-card');
+            cards.forEach(card => {
+                const cardRect = card.getBoundingClientRect();
+                const containerCenter = scrollContainer.offsetWidth / 2;
+                const cardCenter = cardRect.left + cardRect.width / 2;
+                const distance = cardCenter - containerCenter;
+                const movementFactor = 0.05; 
+                const translateX = distance * movementFactor;
+
+                const image = card.querySelector('.poster-img');
+                
+                if (image) {
+                    image.style.transform = `translateX(${-translateX}px) scale(1.05)`; 
+                }
+            });
+        });
+    }
 });
