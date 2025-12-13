@@ -944,6 +944,7 @@ body::-webkit-scrollbar {
 
 /* --- MUSIC PLAYER STYLES (Glassmorphism Version - Updated) --- */
 
+
 :root {
     --white: #ffffff;
     --gray-light: #f0f0f0;
@@ -1105,12 +1106,12 @@ body::-webkit-scrollbar {
 
 .control-btn.active img {
     opacity: 1;
-    filter: drop-shadow(0 0 8px var(--player-glow));
+    filter: drop-shadow(0 0 12px var(--player-glow));
 }
 
 .progress-section {
     position: absolute;
-    bottom: 0;
+    bottom: 0.8px;
     left: 0;
     width: 100%;
     height: 3px;
