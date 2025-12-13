@@ -797,19 +797,19 @@ body::-webkit-scrollbar {
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 
     .section-text {
-        font-size: 0.95rem;
+        font-size: 0.8rem;
     }
 
     .empathy-title {
-        font-size: 2rem;
+        font-size: 1.9rem;
     }
 
     .empathy-subtitle {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 }
 
