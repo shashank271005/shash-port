@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    // --- 1. PLAYLIST DATA ---
     const playlist = [
         {
             title: "Comethru",
@@ -41,7 +40,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             title: "Beautiful Things",
             artist: "Benson Boone",
             audioSrc: "audio/track7.mp3", 
-            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/340997ed-ea08-494c-9b27-7a8aa2676ea8/BeautifulThingsEnglish202420240404023143500x500.jpg" 
+            albumArtSrc: "https://phg7ih4ayg.ucarecd.net/340997ed-ea08-494c-9b27-7a8ac2676ea8/BeautifulThingsEnglish202420240404023143500x500.jpg" 
         },
         {
             title: "Living Hell",
@@ -67,13 +66,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
             audioSrc: "audio/track11.mp3", 
             albumArtSrc: "https://phg7ih4ayg.ucarecd.net/91c03e11-ecb6-4497-828f-4eb1361918e4/0e5ce9fa46148e0464e3376d2d060f11.jpg" 
         }
-        // Add more tracks here following the same object structure
     ];
 
     let currentTrackIndex = 0;
     let isShuffling = false;
 
-    // --- 2. VIDEO AUTOPLAY ---
     const video = document.getElementById('background-video');
     if (video) {
         video.play().catch(error => {
@@ -81,9 +78,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // --- 3. MENU TOGGLE LOGIC ---
     const menuButton = document.querySelector('.menu-button');
     const menuPanel = document.getElementById('main-navigation');
+    const menuItems = menuPanel.querySelectorAll('.menu-item');
+
+    const closeMenu = () => {
+        menuPanel.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+    };
 
     if (menuButton && menuPanel) {
         menuButton.addEventListener('click', () => {
@@ -94,13 +96,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         
         document.addEventListener('click', (e) => {
             if (!menuButton.contains(e.target) && !menuPanel.contains(e.target) && menuPanel.classList.contains('is-open')) {
-                menuPanel.classList.remove('is-open');
-                menuButton.setAttribute('aria-expanded', 'false');
+                closeMenu();
             }
+        });
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (item.getAttribute('href').startsWith('#')) {
+                    closeMenu();
+                }
+            });
         });
     }
 
-    // --- 4. POSTER SCROLL PARALLAX EFFECT ---
     const scrollContainer = document.getElementById('poster-scroll-container');
     
     if (scrollContainer) {
@@ -123,7 +131,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // --- 5. MUSIC PLAYER CONTROLS & LOGIC ---
     const playerContainer = document.querySelector('.music-player-container');
     const toggleButton = document.getElementById('player-toggle-button');
     const audioPlayer = document.getElementById('audio-player');
@@ -188,8 +195,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         audioPlayer.play();
         playPauseIcon.src = 'img/pause.svg';
     };
-
-    // --- Event Listeners ---
 
     loadTrack(currentTrackIndex); 
     
