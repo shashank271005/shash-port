@@ -1242,3 +1242,114 @@ body::-webkit-scrollbar {
         right: 12px;
     }
 }
+
+/* iPhone SE and very small mobile screens (375px) */
+@media (max-width: 390px) {
+    :root {
+        --player-width: 95vw;
+        --player-height: 55px;
+    }
+    
+    .music-player {
+        width: var(--player-width);
+        height: var(--player-height);
+        padding: 8px 12px;
+        border-radius: 10px;
+        bottom: 8px;
+    }
+    
+    .player-content-wrapper {
+        padding: 8px;
+        gap: 6px;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .player-top-content {
+        flex: 1;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+        height: auto;
+        padding: 0;
+    }
+    
+    .album-art-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+        flex-shrink: 0;
+    }
+    
+    .track-info {
+        flex-grow: 1;
+        white-space: nowrap;
+        min-width: 0;
+    }
+    
+    .track-title {
+        font-size: 0.75rem;
+        margin-bottom: 1px;
+    }
+    
+    .track-artist {
+        font-size: 0.65rem;
+        opacity: 0.6;
+    }
+    
+    .progress-section {
+        display: none;
+    }
+    
+    .controls-section {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .controls-buttons {
+        gap: 8px;
+    }
+    
+    .control-btn {
+        padding: 3px;
+    }
+    
+    .control-btn img {
+        width: 16px;
+        height: 16px;
+        opacity: 0.7;
+    }
+    
+    .control-btn:hover img {
+        opacity: 1;
+    }
+    
+    .play-pause-btn {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .play-pause-btn img {
+        width: 18px;
+        height: 18px;
+        opacity: 1;
+    }
+    
+    .shuffle-btn img, 
+    .loop-btn img {
+        display: none;
+    }
+    
+    .player-toggle-button {
+        width: 42px;
+        height: 42px;
+        bottom: 8px;
+        right: 8px;
+        z-index: 10001;
+    }
+    
+    .player-toggle-button img {
+        width: 20px;
+        height: 20px;
+    }
+}
