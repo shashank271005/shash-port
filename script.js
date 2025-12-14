@@ -1,4 +1,5 @@
-document.addEventListener('contextmenu', event => event.preventDefault()); /* disabled right click */
+document.addEventListener('contextmenu', event => event.preventDefault()); 
+
 document.addEventListener('DOMContentLoaded', (event) => {
 
     const playlist = [
@@ -146,12 +147,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    const formatTime = (seconds) => {
-        const min = Math.floor(seconds / 60);
-        const sec = Math.floor(seconds % 60).toString().padStart(2, '0');
-        return `${min}:${sec}`;
-    };
-
     const loadTrack = (index) => {
         const track = playlist[index];
 
@@ -260,130 +255,124 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
-
-
-
-
-const initTechStackAnimation = () => {
-    const section = document.getElementById('tech-stack-section');
-    const wrapper = document.getElementById('tech-stack-wrapper');
-    const items = wrapper ? Array.from(wrapper.querySelectorAll('.stack-item[style*="--i"]')) : [];
-    
-    if (!section || items.length === 0) return;
-
-    const TOTAL_ITEMS = items.length;
-    const RADIUS = 300;
-    
- 
-    const TOTAL_DURATION = 7000; 
-    
-    
-    const DURATION_P1 = 2500; 
-    const DURATION_P2 = 2000; 
-    const DURATION_P3 = 2500; 
-    
-    const START_OFFSET = 300; 
-    const ITEM_SPACING = 120;
-
-    const itemPositions = items.map((item) => {
-        const index = parseInt(item.style.getPropertyValue('--i')) - 1; 
-        const centerIndex = index - (TOTAL_ITEMS - 1) / 2;
-
-        const angle = (centerIndex * 2 * Math.PI) / TOTAL_ITEMS;
+    const initTechStackAnimation = () => {
+        const section = document.getElementById('tech-stack-section');
+        const wrapper = document.getElementById('tech-stack-wrapper');
+        const items = wrapper ? Array.from(wrapper.querySelectorAll('.stack-item[style*="--i"]')) : [];
         
-   
-        const xCircle = RADIUS * Math.sin(angle);
-        
- 
-        const yCircle = RADIUS * Math.cos(angle) * -1;
-        
-        const rotateCircle = angle * 180 / Math.PI;
+        if (!section || items.length === 0) return;
 
+        const TOTAL_ITEMS = items.length;
+        const RADIUS = 300;
         
-        const xStart = centerIndex * ITEM_SPACING; 
-        const yStart = 0; 
-        const rotateStart = 0;
+        const TOTAL_DURATION = 7000; 
         
-        return { item, xStart, yStart, rotateStart, xCircle, yCircle, rotateCircle };
-    });
+        const DURATION_P1 = 2500; 
+        const DURATION_P2 = 2000; 
+        const DURATION_P3 = 2500; 
+        
+        const START_OFFSET = 300; 
+        const ITEM_SPACING = 120;
 
-    const updateAnimation = () => {
-        const sectionTop = section.offsetTop;
-        let scrollYRelative = window.scrollY - (sectionTop + START_OFFSET);
-        
-        let currentX, currentY, currentRotate;
-        let wrapperRotation = 0;
-        
-        
-        if (scrollYRelative <= DURATION_P1) {
-            const phaseProgress = Math.min(1, scrollYRelative / DURATION_P1);
+        const itemPositions = items.map((item) => {
+            const index = parseInt(item.style.getPropertyValue('--i')) - 1; 
+            const centerIndex = index - (TOTAL_ITEMS - 1) / 2;
+
+            const angle = (centerIndex * 2 * Math.PI) / TOTAL_ITEMS;
+            
+            const xCircle = RADIUS * Math.sin(angle);
+            
+            const yCircle = RADIUS * Math.cos(angle) * -1;
+            
+            const rotateCircle = angle * 180 / Math.PI;
+
+            
+            const xStart = centerIndex * ITEM_SPACING; 
+            const yStart = 0; 
+            const rotateStart = 0;
+            
+            return { item, xStart, yStart, rotateStart, xCircle, yCircle, rotateCircle };
+        });
+
+        const updateAnimation = () => {
+            const sectionTop = section.offsetTop;
+            let scrollYRelative = window.scrollY - (sectionTop + START_OFFSET);
+            
+            let currentX, currentY, currentRotate;
+            let wrapperRotation = 0;
             
             
-            const easedProgress = 0.5 - Math.cos(phaseProgress * Math.PI) / 2; 
-
-            itemPositions.forEach(pos => {
-               
-                currentX = pos.xStart + (pos.xCircle - pos.xStart) * easedProgress;
-                currentY = pos.yStart + (pos.yCircle - pos.yStart) * easedProgress;
-                currentRotate = pos.rotateStart + (pos.rotateCircle - pos.rotateStart) * easedProgress;
+            if (scrollYRelative <= DURATION_P1) {
+                const phaseProgress = Math.min(1, scrollYRelative / DURATION_P1);
                 
-                pos.item.style.transform = `translate(-50%, -50%) translateX(${currentX}px) translateY(${currentY}px) rotate(${currentRotate}deg)`;
-            });
-            wrapperRotation = 0; 
-        } 
-       
-        else if (scrollYRelative <= DURATION_P1 + DURATION_P2) {
-            const phaseScroll = scrollYRelative - DURATION_P1;
-            const phaseProgress = phaseScroll / DURATION_P2;
+                
+                const easedProgress = 0.5 - Math.cos(phaseProgress * Math.PI) / 2; 
 
-            wrapperRotation = phaseProgress * 360; 
-            
-            itemPositions.forEach(pos => {
-              
-                pos.item.style.transform = `translate(-50%, -50%) translateX(${pos.xCircle}px) translateY(${pos.yCircle}px) rotate(${pos.rotateCircle}deg)`;
-            });
-        }
-        
-        
-        else { 
-            const phaseScroll = scrollYRelative - (DURATION_P1 + DURATION_P2);
-            const phaseProgress = phaseScroll / DURATION_P3;
-            
-            wrapperRotation = 360 + (phaseProgress * 180); 
-            
-            itemPositions.forEach(pos => {
-               
-                pos.item.style.transform = `translate(-50%, -50%) translateX(${pos.xCircle}px) translateY(${pos.yCircle}px) rotate(${pos.rotateCircle}deg)`;
-            });
+                itemPositions.forEach(pos => {
+                   
+                    currentX = pos.xStart + (pos.xCircle - pos.xStart) * easedProgress;
+                    currentY = pos.yStart + (pos.yCircle - pos.yStart) * easedProgress;
+                    currentRotate = pos.rotateStart + (pos.rotateCircle - pos.rotateStart) * easedProgress;
+                    
+                    pos.item.style.transform = `translate(-50%, -50%) translateX(${currentX}px) translateY(${currentY}px) rotate(${currentRotate}deg)`;
+                });
+                wrapperRotation = 0; 
+            } 
+           
+            else if (scrollYRelative <= DURATION_P1 + DURATION_P2) {
+                const phaseScroll = scrollYRelative - DURATION_P1;
+                const phaseProgress = phaseScroll / DURATION_P2;
 
-            if (scrollYRelative >= TOTAL_DURATION) {
-                 wrapperRotation = 360 + 180; 
+                wrapperRotation = phaseProgress * 360; 
+                
+                itemPositions.forEach(pos => {
+                  
+                    pos.item.style.transform = `translate(-50%, -50%) translateX(${pos.xCircle}px) translateY(${pos.yCircle}px) rotate(${pos.rotateCircle}deg)`;
+                });
             }
-        }
-        
-        wrapper.style.transform = `rotateZ(${wrapperRotation}deg)`;
+            
+            
+            else { 
+                const phaseScroll = scrollYRelative - (DURATION_P1 + DURATION_P2);
+                const phaseProgress = phaseScroll / DURATION_P3;
+                
+                wrapperRotation = 360 + (phaseProgress * 180); 
+                
+                itemPositions.forEach(pos => {
+                   
+                    pos.item.style.transform = `translate(-50%, -50%) translateX(${pos.xCircle}px) translateY(${pos.yCircle}px) rotate(${pos.rotateCircle}deg)`;
+                });
+
+                if (scrollYRelative >= TOTAL_DURATION) {
+                     wrapperRotation = 360 + 180; 
+                }
+            }
+            
+            wrapper.style.transform = `rotateZ(${wrapperRotation}deg)`;
+        };
+
+        updateAnimation();
+        window.addEventListener('scroll', updateAnimation);
     };
 
-    updateAnimation();
-    window.addEventListener('scroll', updateAnimation);
-};
-
-initTechStackAnimation();
-
-
-
-
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
+    initTechStackAnimation();
 
     const designCards = document.querySelectorAll('.design-card');
 
-  
+    const rightCard = document.querySelector('.design-card.right-card');
+    const globeImg = rightCard ? rightCard.querySelector('.globe-img') : null;
+    const labels = rightCard ? rightCard.querySelectorAll('.expertise-label') : [];
+    
+    if (globeImg) {
+        globeImg.style.transition = 'transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    }
+
+    labels.forEach(label => {
+        label.style.transition = 'opacity 0.4s ease-out, transform 0.6s ease-out';
+        label.style.opacity = 0; 
+        label.style.transform = 'translateY(10px)'; 
+    });
+
     const animateDesignApproach = (card, isEntering) => {
         const textGroup = card.querySelector('[data-animation="design"]');
         if (!textGroup) return;
@@ -392,43 +381,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const lines = textGroup.querySelectorAll('.animated-line');
         lines.forEach((line, index) => {
+            const delay = isEntering ? index * 100 : (lines.length - 1 - index) * 50;
             if (isEntering) {
-                
                 setTimeout(() => {
                     line.style.transform = 'translateX(0)';
                     line.style.opacity = 1;
-                }, index * 100); 
+                }, delay); 
             } else {
-                
                 setTimeout(() => {
                     line.style.transform = 'translateX(-100%)';
                     line.style.opacity = 0;
-                }, (lines.length - 1 - index) * 50);
+                }, delay); 
             }
         });
     };
-
     
     const animateExpertise = (card, isEntering) => {
-        const textGroup = card.querySelector('[data-animation="expertise"]');
         const globeImg = card.querySelector('.globe-img');
         const labels = card.querySelectorAll('.expertise-label');
 
-        if (!textGroup) return;
-
-        
         if (globeImg) {
             globeImg.style.transform = isEntering ? 'rotate(360deg)' : 'rotate(0deg)';
         }
         
-        
         labels.forEach((label, index) => {
-            const delay = index * 150; 
+            const delay = isEntering ? index * 150 : (labels.length - 1 - index) * 50; 
             
             if (isEntering) {
                 setTimeout(() => {
                     label.style.opacity = 1;
-                    label.style.transform = 'translateY(0)';
+                    label.style.transform = 'translateY(0)'; 
                 }, delay);
             } else {
                 setTimeout(() => {
@@ -439,13 +421,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     
-    
     designCards.forEach(card => {
         
-        
+        const titleElement = card.querySelector('.card-title');
+
         card.addEventListener('mouseenter', () => {
             
-            const titleElement = card.querySelector('.card-title');
             if (titleElement) {
                 titleElement.classList.add('is-hovered');
             }
@@ -460,7 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
        
         card.addEventListener('mouseleave', () => {
             
-            const titleElement = card.querySelector('.card-title');
             if (titleElement) {
                 titleElement.classList.remove('is-hovered');
             }
@@ -472,12 +452,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
 
-
-const currentYearSpan = document.getElementById('current-year');
-if (currentYearSpan) {
-    currentYearSpan.textContent = new Date().getFullYear();
-}
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
 
 });
