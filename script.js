@@ -273,10 +273,10 @@ const initTechStackAnimation = () => {
     const TOTAL_ITEMS = items.length;
     const RADIUS = 300;
     
-    // Total Scroll Distance
+ 
     const TOTAL_DURATION = 7000; 
     
-    // Phase Durations (summing up to TOTAL_DURATION)
+    
     const DURATION_P1 = 2500; 
     const DURATION_P2 = 2000; 
     const DURATION_P3 = 2500; 
@@ -290,18 +290,17 @@ const initTechStackAnimation = () => {
 
         const angle = (centerIndex * 2 * Math.PI) / TOTAL_ITEMS;
         
-        // Target Circle Position (End of P1)
+   
         const xCircle = RADIUS * Math.sin(angle);
         
-        // Using Math.cos() and multiplying by -1 places the icons above the center point.
-        // This is the most standard way to define the Y coordinates for an arching structure.
+ 
         const yCircle = RADIUS * Math.cos(angle) * -1;
         
         const rotateCircle = angle * 180 / Math.PI;
 
-        // Starting Position (Start of P1) 
+        
         const xStart = centerIndex * ITEM_SPACING; 
-        const yStart = 0; // Starting flat on the center line
+        const yStart = 0; 
         const rotateStart = 0;
         
         return { item, xStart, yStart, rotateStart, xCircle, yCircle, rotateCircle };
@@ -314,15 +313,15 @@ const initTechStackAnimation = () => {
         let currentX, currentY, currentRotate;
         let wrapperRotation = 0;
         
-        // --- PHASE 1: TRANSITION TO CIRCLE (0px to 2500px) ---
+        
         if (scrollYRelative <= DURATION_P1) {
             const phaseProgress = Math.min(1, scrollYRelative / DURATION_P1);
             
-            // Using a standard, smooth ease-in-out function for the transition
+            
             const easedProgress = 0.5 - Math.cos(phaseProgress * Math.PI) / 2; 
 
             itemPositions.forEach(pos => {
-                // Interpolate all three transforms simultaneously
+               
                 currentX = pos.xStart + (pos.xCircle - pos.xStart) * easedProgress;
                 currentY = pos.yStart + (pos.yCircle - pos.yStart) * easedProgress;
                 currentRotate = pos.rotateStart + (pos.rotateCircle - pos.rotateStart) * easedProgress;
@@ -331,8 +330,7 @@ const initTechStackAnimation = () => {
             });
             wrapperRotation = 0; 
         } 
-        
-        // --- PHASE 2: HOLD & SPIN (2500px to 4500px) ---
+       
         else if (scrollYRelative <= DURATION_P1 + DURATION_P2) {
             const phaseScroll = scrollYRelative - DURATION_P1;
             const phaseProgress = phaseScroll / DURATION_P2;
@@ -340,12 +338,12 @@ const initTechStackAnimation = () => {
             wrapperRotation = phaseProgress * 360; 
             
             itemPositions.forEach(pos => {
-                // Hold icons perfectly still at the Circle Position
+              
                 pos.item.style.transform = `translate(-50%, -50%) translateX(${pos.xCircle}px) translateY(${pos.yCircle}px) rotate(${pos.rotateCircle}deg)`;
             });
         }
         
-        // --- PHASE 3: CONTINUOUS SPIN/END (4500px to 7000px) ---
+        
         else { 
             const phaseScroll = scrollYRelative - (DURATION_P1 + DURATION_P2);
             const phaseProgress = phaseScroll / DURATION_P3;
@@ -353,7 +351,7 @@ const initTechStackAnimation = () => {
             wrapperRotation = 360 + (phaseProgress * 180); 
             
             itemPositions.forEach(pos => {
-                // Hold icons perfectly still at the Circle Position
+               
                 pos.item.style.transform = `translate(-50%, -50%) translateX(${pos.xCircle}px) translateY(${pos.yCircle}px) rotate(${pos.rotateCircle}deg)`;
             });
 
@@ -372,5 +370,113 @@ const initTechStackAnimation = () => {
 initTechStackAnimation();
 
 
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const designCards = document.querySelectorAll('.design-card');
+
+  
+    const animateDesignApproach = (card, isEntering) => {
+        const textGroup = card.querySelector('[data-animation="design"]');
+        if (!textGroup) return;
+
+        textGroup.style.opacity = isEntering ? 1 : 0;
+
+        const lines = textGroup.querySelectorAll('.animated-line');
+        lines.forEach((line, index) => {
+            if (isEntering) {
+                
+                setTimeout(() => {
+                    line.style.transform = 'translateX(0)';
+                    line.style.opacity = 1;
+                }, index * 100); 
+            } else {
+                
+                setTimeout(() => {
+                    line.style.transform = 'translateX(-100%)';
+                    line.style.opacity = 0;
+                }, (lines.length - 1 - index) * 50);
+            }
+        });
+    };
+
+    
+    const animateExpertise = (card, isEntering) => {
+        const textGroup = card.querySelector('[data-animation="expertise"]');
+        const globeImg = card.querySelector('.globe-img');
+        const labels = card.querySelectorAll('.expertise-label');
+
+        if (!textGroup) return;
+
+        
+        if (globeImg) {
+            globeImg.style.transform = isEntering ? 'rotate(360deg)' : 'rotate(0deg)';
+        }
+        
+        
+        labels.forEach((label, index) => {
+            const delay = index * 150; 
+            
+            if (isEntering) {
+                setTimeout(() => {
+                    label.style.opacity = 1;
+                    label.style.transform = 'translateY(0)';
+                }, delay);
+            } else {
+                setTimeout(() => {
+                    label.style.opacity = 0;
+                    label.style.transform = 'translateY(10px)'; 
+                }, delay);
+            }
+        });
+    };
+    
+    
+    designCards.forEach(card => {
+        
+        
+        card.addEventListener('mouseenter', () => {
+            
+            const titleElement = card.querySelector('.card-title');
+            if (titleElement) {
+                titleElement.classList.add('is-hovered');
+            }
+
+            if (card.classList.contains('left-card')) {
+                animateDesignApproach(card, true);
+            } else if (card.classList.contains('right-card')) {
+                animateExpertise(card, true);
+            }
+        });
+
+       
+        card.addEventListener('mouseleave', () => {
+            
+            const titleElement = card.querySelector('.card-title');
+            if (titleElement) {
+                titleElement.classList.remove('is-hovered');
+            }
+
+            if (card.classList.contains('left-card')) {
+                animateDesignApproach(card, false);
+            } else if (card.classList.contains('right-card')) {
+                animateExpertise(card, false);
+            }
+        });
+    });
+});
+
+
+const currentYearSpan = document.getElementById('current-year');
+if (currentYearSpan) {
+    currentYearSpan.textContent = new Date().getFullYear();
+}
 
 });
