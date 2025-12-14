@@ -2086,6 +2086,26 @@ body::-webkit-scrollbar {
     opacity: 1;
 }
 
+.footer-tagline::selection {
+    color: #23c8ff;
+
+}
+
+.footer-email::selection {
+    color: #23c8ff;
+
+}
+.footer-copyright::selection {
+    color: #23c8ff;
+
+}
+
+.footer-links-group::selection {
+    color: #23c8ff;
+
+}
+
+
 @media (max-width: 768px) {
     .main-footer {
         padding: 60px 5vw 30px;
