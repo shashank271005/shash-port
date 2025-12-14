@@ -2105,6 +2105,13 @@ body::-webkit-scrollbar {
 
 }
 
+.left-card::selection {
+    color: #23c8ff;
+
+}
+.right-card::selection {
+    color: #23c8ff; 
+}
 
 @media (max-width: 768px) {
     .main-footer {
