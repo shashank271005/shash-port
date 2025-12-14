@@ -1,4 +1,3 @@
-
 :root {
     --white: #ffffff;
     --gray-light: #f0f0f0;
@@ -717,7 +716,7 @@ body::-webkit-scrollbar {
     background: #000;
     z-index: 1;
     overflow: hidden;
-    
+
 }
 
 #empathy-video {
@@ -862,7 +861,8 @@ body::-webkit-scrollbar {
     .showcase-subtitle {
         font-size: 0.8rem;
     }
-}   
+}
+
 .scroll-container {
     display: flex;
     overflow-x: scroll;
@@ -971,13 +971,12 @@ body::-webkit-scrollbar {
     left: 0;
     width: 100%;
     height: var(--player-height);
-    padding: 0 40px; 
+    padding: 0 40px;
     background: linear-gradient(to bottom,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.8) 50%,
-        rgba(0, 0, 0, 1) 100%
-    );
-    background-color: transparent; 
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.8) 50%,
+            rgba(0, 0, 0, 1) 100%);
+    background-color: transparent;
     opacity: 0;
     transform: translateY(var(--player-height));
     visibility: hidden;
@@ -1010,11 +1009,11 @@ body::-webkit-scrollbar {
     align-items: center;
     gap: 15px;
     flex-shrink: 0;
-    max-width: 400px; 
+    max-width: 400px;
 }
 
 .album-art-box {
-    width: 50px; 
+    width: 50px;
     height: 50px;
     border-radius: 6px;
     overflow: hidden;
@@ -1188,6 +1187,7 @@ body::-webkit-scrollbar {
     .music-player {
         padding: 0 20px;
     }
+
     .controls-buttons {
         gap: 20px;
     }
@@ -1197,42 +1197,52 @@ body::-webkit-scrollbar {
     :root {
         --player-height: 60px;
     }
+
     .music-player {
         height: var(--player-height);
         padding: 0 15px;
     }
+
     .controls-section {
         position: static;
         transform: none;
-        flex-grow: 1; 
+        flex-grow: 1;
         justify-content: center;
     }
+
     .track-info-left {
         width: auto;
         max-width: none;
         flex-shrink: 1;
     }
+
     .album-art-box {
         width: 40px;
         height: 40px;
     }
+
     .track-title {
         font-size: 0.8rem;
     }
+
     .track-artist {
         font-size: 0.7rem;
     }
+
     .controls-buttons {
         gap: 15px;
     }
+
     .control-btn img {
         width: 18px;
         height: 18px;
     }
+
     .play-pause-btn img {
         width: 22px;
         height: 22px;
     }
+
     .progress-section {
         display: none;
     }
@@ -1249,7 +1259,7 @@ body::-webkit-scrollbar {
         --player-width: 95vw;
         --player-height: 55px;
     }
-    
+
     .music-player {
         width: var(--player-width);
         height: var(--player-height);
@@ -1257,14 +1267,14 @@ body::-webkit-scrollbar {
         border-radius: 10px;
         bottom: 8px;
     }
-    
+
     .player-content-wrapper {
         padding: 8px;
         gap: 6px;
         flex-direction: row;
         align-items: center;
     }
-    
+
     .player-top-content {
         flex: 1;
         flex-direction: row;
@@ -1273,73 +1283,73 @@ body::-webkit-scrollbar {
         height: auto;
         padding: 0;
     }
-    
+
     .album-art-box {
         width: 40px;
         height: 40px;
         border-radius: 6px;
         flex-shrink: 0;
     }
-    
+
     .track-info {
         flex-grow: 1;
         white-space: nowrap;
         min-width: 0;
     }
-    
+
     .track-title {
         font-size: 0.75rem;
         margin-bottom: 1px;
     }
-    
+
     .track-artist {
         font-size: 0.65rem;
         opacity: 0.6;
     }
-    
+
     .progress-section {
         display: none;
     }
-    
+
     .controls-section {
         padding: 0;
         margin: 0;
     }
-    
+
     .controls-buttons {
         gap: 8px;
     }
-    
+
     .control-btn {
         padding: 3px;
     }
-    
+
     .control-btn img {
         width: 16px;
         height: 16px;
         opacity: 0.7;
     }
-    
+
     .control-btn:hover img {
         opacity: 1;
     }
-    
+
     .play-pause-btn {
         width: 30px;
         height: 30px;
     }
-    
+
     .play-pause-btn img {
         width: 18px;
         height: 18px;
         opacity: 1;
     }
-    
-    .shuffle-btn img, 
+
+    .shuffle-btn img,
     .loop-btn img {
         display: none;
     }
-    
+
     .player-toggle-button {
         width: 42px;
         height: 42px;
@@ -1347,7 +1357,7 @@ body::-webkit-scrollbar {
         right: 8px;
         z-index: 10001;
     }
-    
+
     .player-toggle-button img {
         width: 20px;
         height: 20px;
@@ -1373,7 +1383,7 @@ body::-webkit-scrollbar {
     background: #000;
     z-index: 1;
     overflow: hidden;
-    
+
 }
 
 .resume-section::before {
@@ -1456,5 +1466,265 @@ body::-webkit-scrollbar {
 
     .resume-subtitle {
         font-size: 0.8rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* upar mt chedo all good */
+
+
+/* --- NEW STYLES FOR TECH STACK HEADER --- */
+
+.tech-stack-section {
+
+    min-height: 200vh;
+    position: relative;
+    width: 100vw;
+    padding-top: 100px;
+    background-color: #f7f7f7;
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.tech-stack-header {
+
+    position: relative;
+    width: 80%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    z-index: 10;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.new-main-title {
+
+    font-family: "Google Sans", sans-serif;
+    font-weight: 700;
+    font-size: 11vw;
+    line-height: 0.85;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.title-line-1,
+.title-line-2 .title-line-3 {
+    display: block;
+    letter-spacing: -0.04em;
+}
+.title-line-2 {
+    color: #23c8ff;
+}
+
+.title-line-1::selection {
+    color: #23c8ff;
+}
+.title-line-2::selection {
+    color: #ffffff;
+}
+.title-line-3::selection {
+    color: #23c8ff;
+}
+
+
+.tech-stack-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 0 50px;
+}
+
+.new-main-title {
+
+    flex-basis: 60%;
+    max-width: 60%;
+}
+
+.new-subtitle {
+
+    flex-basis: 70%;
+    max-width: 70%;
+
+    font-family: 'Google Sans Text', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #ffffff;
+    margin-top: 20px;
+    text-align: left;
+}
+.new-subtitle-2 {
+    
+    flex-basis: 70%;
+    max-width: 70%;
+
+    font-family: 'Google Sans Text', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #ffffff;
+    margin-top: 500px;
+    text-align: left;
+}
+.new-subtitle::selection {
+    color: #575a5b; 
+}
+.new-subtitle-2::selection {
+    color: #23c8ff; 
+}
+
+
+@media (max-width: 1024px) {
+    .tech-stack-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 20px;
+    }
+
+    .new-main-title,
+    .new-subtitle {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    .new-main-title {
+        font-size: 15vw;
+        margin-bottom: 20px;
+    }
+
+    .new-subtitle {
+        margin-top: 10px;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+/* TECH STACK SECTION BASE STYLING*/
+
+.tech-stack-section {
+    min-height: 70vh;
+    position: relative;
+    width: 110vw;
+    padding-top: 100px;
+    background-color: #000000;
+    color: var(--white);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.tech-stack-header {
+    text-align: center;
+    margin-bottom: 80px;
+    z-index: 10;
+}
+
+.tech-stack-header h2 {
+    font-family: "Google Sans", sans-serif;
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.tech-stack-header p {
+    font-family: 'Google Sans Text', sans-serif;
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+
+.tech-stack-wrapper {
+    position: sticky;
+    top: 50%;
+
+    width: 600px;
+    height: 600px;
+
+    margin: -300px auto 0;
+
+    transform-style: preserve-3d;
+}
+
+.stack-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 120px;
+    height: 120px;
+    border-radius: 25px;
+
+    background-color: var(--glass-background);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    transform: translate(-50%, -50%);
+
+    transition: transform 0.05s linear, opacity 0.3s;
+}
+
+.stack-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.stack-item .label {
+    position: absolute;
+    bottom: 5px;
+    font-size: 0.75rem;
+    font-family: 'Google Sans Text', sans-serif;
+    opacity: 0.6;
+}
+
+
+@media (max-width: 768px) {
+    .tech-stack-wrapper {
+        width: 350px;
+        height: 350px;
+        margin-top: -175px;
+    }
+
+    .stack-item {
+        width: 80px;
+        height: 80px;
     }
 }

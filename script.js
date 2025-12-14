@@ -258,4 +258,119 @@ document.addEventListener('DOMContentLoaded', (event) => {
             playNextTrack();
         }
     });
+
+
+
+
+
+const initTechStackAnimation = () => {
+    const section = document.getElementById('tech-stack-section');
+    const wrapper = document.getElementById('tech-stack-wrapper');
+    const items = wrapper ? Array.from(wrapper.querySelectorAll('.stack-item[style*="--i"]')) : [];
+    
+    if (!section || items.length === 0) return;
+
+    const TOTAL_ITEMS = items.length;
+    const RADIUS = 300;
+    
+    // Total Scroll Distance
+    const TOTAL_DURATION = 7000; 
+    
+    // Phase Durations (summing up to TOTAL_DURATION)
+    const DURATION_P1 = 2500; 
+    const DURATION_P2 = 2000; 
+    const DURATION_P3 = 2500; 
+    
+    const START_OFFSET = 300; 
+    const ITEM_SPACING = 120;
+
+    const itemPositions = items.map((item) => {
+        const index = parseInt(item.style.getPropertyValue('--i')) - 1; 
+        const centerIndex = index - (TOTAL_ITEMS - 1) / 2;
+
+        const angle = (centerIndex * 2 * Math.PI) / TOTAL_ITEMS;
+        
+        // Target Circle Position (End of P1)
+        const xCircle = RADIUS * Math.sin(angle);
+        
+        // Using Math.cos() and multiplying by -1 places the icons above the center point.
+        // This is the most standard way to define the Y coordinates for an arching structure.
+        const yCircle = RADIUS * Math.cos(angle) * -1;
+        
+        const rotateCircle = angle * 180 / Math.PI;
+
+        // Starting Position (Start of P1) 
+        const xStart = centerIndex * ITEM_SPACING; 
+        const yStart = 0; // Starting flat on the center line
+        const rotateStart = 0;
+        
+        return { item, xStart, yStart, rotateStart, xCircle, yCircle, rotateCircle };
+    });
+
+    const updateAnimation = () => {
+        const sectionTop = section.offsetTop;
+        let scrollYRelative = window.scrollY - (sectionTop + START_OFFSET);
+        
+        let currentX, currentY, currentRotate;
+        let wrapperRotation = 0;
+        
+        // --- PHASE 1: TRANSITION TO CIRCLE (0px to 2500px) ---
+        if (scrollYRelative <= DURATION_P1) {
+            const phaseProgress = Math.min(1, scrollYRelative / DURATION_P1);
+            
+            // Using a standard, smooth ease-in-out function for the transition
+            const easedProgress = 0.5 - Math.cos(phaseProgress * Math.PI) / 2; 
+
+            itemPositions.forEach(pos => {
+                // Interpolate all three transforms simultaneously
+                currentX = pos.xStart + (pos.xCircle - pos.xStart) * easedProgress;
+                currentY = pos.yStart + (pos.yCircle - pos.yStart) * easedProgress;
+                currentRotate = pos.rotateStart + (pos.rotateCircle - pos.rotateStart) * easedProgress;
+                
+                pos.item.style.transform = `translate(-50%, -50%) translateX(${currentX}px) translateY(${currentY}px) rotate(${currentRotate}deg)`;
+            });
+            wrapperRotation = 0; 
+        } 
+        
+        // --- PHASE 2: HOLD & SPIN (2500px to 4500px) ---
+        else if (scrollYRelative <= DURATION_P1 + DURATION_P2) {
+            const phaseScroll = scrollYRelative - DURATION_P1;
+            const phaseProgress = phaseScroll / DURATION_P2;
+
+            wrapperRotation = phaseProgress * 360; 
+            
+            itemPositions.forEach(pos => {
+                // Hold icons perfectly still at the Circle Position
+                pos.item.style.transform = `translate(-50%, -50%) translateX(${pos.xCircle}px) translateY(${pos.yCircle}px) rotate(${pos.rotateCircle}deg)`;
+            });
+        }
+        
+        // --- PHASE 3: CONTINUOUS SPIN/END (4500px to 7000px) ---
+        else { 
+            const phaseScroll = scrollYRelative - (DURATION_P1 + DURATION_P2);
+            const phaseProgress = phaseScroll / DURATION_P3;
+            
+            wrapperRotation = 360 + (phaseProgress * 180); 
+            
+            itemPositions.forEach(pos => {
+                // Hold icons perfectly still at the Circle Position
+                pos.item.style.transform = `translate(-50%, -50%) translateX(${pos.xCircle}px) translateY(${pos.yCircle}px) rotate(${pos.rotateCircle}deg)`;
+            });
+
+            if (scrollYRelative >= TOTAL_DURATION) {
+                 wrapperRotation = 360 + 180; 
+            }
+        }
+        
+        wrapper.style.transform = `rotateZ(${wrapperRotation}deg)`;
+    };
+
+    updateAnimation();
+    window.addEventListener('scroll', updateAnimation);
+};
+
+initTechStackAnimation();
+
+
+
 });
