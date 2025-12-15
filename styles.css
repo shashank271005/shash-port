@@ -1923,7 +1923,7 @@ body::-webkit-scrollbar {
 .card-label {
     font-size: 0.8rem;
     color: #a0a0a0;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     opacity: 0.8;
 }
 
@@ -1958,7 +1958,7 @@ body::-webkit-scrollbar {
     transition: opacity 0.3s ease;
 }
 
-/* Stack expertise labels vertically for right card */
+
 .animated-text-group[data-animation="expertise"] {
     display: flex;
     flex-direction: column;
