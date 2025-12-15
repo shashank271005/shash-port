@@ -399,6 +399,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const animateExpertise = (card, isEntering) => {
         const globeImg = card.querySelector('.globe-img');
         const labels = card.querySelectorAll('.expertise-label');
+        const textGroup = card.querySelector('[data-animation="expertise"]');
+
+        if (textGroup) {
+            textGroup.style.opacity = isEntering ? 1 : 0;
+        }
 
         if (globeImg) {
             globeImg.style.transform = isEntering ? 'rotate(360deg)' : 'rotate(0deg)';
