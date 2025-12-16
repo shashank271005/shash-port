@@ -2004,6 +2004,7 @@ body::-webkit-scrollbar {
     bottom: var(--card-padding);
     left: var(--card-padding);
     width: auto;
+    z-index: 2;
 }
 
 
@@ -2025,19 +2026,21 @@ body::-webkit-scrollbar {
 
 .globe-placeholder {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .globe-img {
     width: 100%;
     height: 100%;
-    opacity: 1;
-
-    transition: transform 1s ease-out;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: transform 1s ease-out, filter 0.6s;
 }
 
 .expertise-label {

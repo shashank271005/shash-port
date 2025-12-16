@@ -388,17 +388,15 @@
                 </div>
 
                 <div class="design-card right-card" data-hover-target="#expertise-content">
-                    <div class="card-content" id="expertise-content">
+                    <div class="card-content" id="expertise-content" style="position:relative; overflow:hidden;">
+                        <img src="img/globe-wireframe.png" alt="Wireframe Globe" class="globe-img" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0.7; z-index:0; pointer-events:none;" />
                         <!-- <p class="card-label">Expertise</p> -->
-                        <h2 class="card-title">
+                        <h2 class="card-title" style="position:relative; z-index:2;">
                             <span class="title-main">Expertise</span>
                         </h2>
-                        <p class="card-subtitle">Areas where I bring the most value</p>
-
-                        <div class="animated-text-group" data-animation="expertise">
-                            <div class="globe-placeholder">
-                                <img src="img/globe-wireframe.png" alt="Wireframe Globe" class="globe-img">
-                            </div>
+                        <p class="card-subtitle" style="position:relative; z-index:2;">Areas where I bring the most value</p>
+                        <div style="height: 180px;"></div>
+                        <div class="animated-text-group" data-animation="expertise" style="position:relative; z-index:2; display:flex; flex-direction:column; gap:18px; align-items:flex-start; margin-top: 24px;">
                             <div class="expertise-label product-design">Product Design</div>
                             <div class="expertise-label no-code">Full-Stack Development</div>
                             <div class="expertise-label branding">Branding</div>
