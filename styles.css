@@ -1,3 +1,12 @@
+/* Responsive footer background for iPhone SE and small screens */
+@media (max-width: 400px) {
+    .main-footer {
+        background-image: url('img/iPhone SE - 1.svg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+}
 /* --- Responsive .new-main-title for iPhone SE and small screens --- */
 @media (max-width: 400px) {
     .new-main-title {
