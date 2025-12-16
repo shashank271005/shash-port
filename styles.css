@@ -1,4 +1,4 @@
-/* Responsive footer background for iPhone SE and small screens */
+
 @media (max-width: 400px) {
     .main-footer {
         background-image: url('img/iPhone SE - 1.svg') !important;
@@ -7,7 +7,7 @@
         background-repeat: no-repeat !important;
     }
 }
-/* --- Responsive .new-main-title for iPhone SE and small screens --- */
+
 @media (max-width: 400px) {
     .new-main-title {
         font-size: 1.7rem !important;
@@ -39,7 +39,7 @@
         color: #23c8ff !important;
     }
 }
-/* --- Strict Responsive Tech Stack Section --- */
+
 @media (max-width: 1200px) {
     .tech-stack-header {
         flex-direction: column;
