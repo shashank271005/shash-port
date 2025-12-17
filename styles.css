@@ -1713,6 +1713,9 @@ body::-webkit-scrollbar {
     align-items: center;
     justify-content: flex-start;
     overflow: hidden;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .tech-stack-header {
