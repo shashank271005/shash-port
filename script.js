@@ -463,4 +463,75 @@ document.addEventListener('DOMContentLoaded', (event) => {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 
+
+    document.addEventListener('DOMContentLoaded', function () {
+    /* ---------------- DRAGGABLE IMAGE STACK (RE-STACKING LOGIC) ---------------- */
+    const imageStack = document.querySelector('.RushHour-image');
+    
+    if (imageStack) {
+        let isDragging = false;
+        let activeCard = null;
+        let startX, startY, posX, posY;
+
+        function dragStart(e) {
+            // Only allow dragging the top-most card (the last child in the DOM)
+            const topCard = imageStack.querySelector('.image-card:last-child');
+            if (e.target.closest('.image-card') !== topCard) return;
+
+            activeCard = topCard;
+            isDragging = true;
+            activeCard.classList.add('is-dragging');
+            activeCard.style.transition = 'none'; // Disable transition during drag for smoothness
+
+            startX = e.pageX || e.touches[0].pageX;
+            startY = e.pageY || e.touches[0].pageY;
+        }
+
+        function dragMove(e) {
+            if (!isDragging || !activeCard) return;
+            e.preventDefault(); // Prevent scrolling while dragging on mobile
+
+            const currentX = e.pageX || e.touches[0].pageX;
+            const currentY = e.pageY || e.touches[0].pageY;
+            
+            posX = currentX - startX;
+            posY = currentY - startY;
+
+            // Apply transformation based on mouse movement
+            activeCard.style.transform = `translate(${posX}px, ${posY}px) rotate(${posX * 0.05}deg)`;
+        }
+
+        function dragEnd(e) {
+            if (!isDragging || !activeCard) return;
+            isDragging = false;
+            activeCard.classList.remove('is-dragging');
+            
+            // Re-enable transition for the snap-back or re-stack movement
+            activeCard.style.transition = 'transform 0.4s ease-out';
+            
+            const dragThreshold = activeCard.offsetWidth * 0.5; 
+
+            // If dragged far enough, move the card to the bottom of the stack (prepend in DOM)
+            if (Math.abs(posX) > dragThreshold) {
+                imageStack.prepend(activeCard);
+            }
+
+            // Reset the inline transform style to let CSS nth-child rotations take over
+            activeCard.style.transform = '';
+            
+            activeCard = null; 
+        }
+
+        // Desktop Events
+        imageStack.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', dragMove);
+        document.addEventListener('mouseup', dragEnd);
+        
+        // Touch/Mobile Events
+        imageStack.addEventListener('touchstart', dragStart, { passive: true });
+        document.addEventListener('touchmove', dragMove, { passive: false });
+        document.addEventListener('touchend', dragEnd);
+    }
+});
+
 });
