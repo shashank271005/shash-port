@@ -1,3 +1,17 @@
+// Custom mute/unmute for main custom video
+document.addEventListener('DOMContentLoaded', function () {
+    const video = document.getElementById('mainCustomVideo');
+    const btn = document.getElementById('muteToggleBtn');
+    const icon = document.getElementById('muteIcon');
+    if (video && btn && icon) {
+        btn.addEventListener('click', function () {
+            video.muted = !video.muted;
+            icon.textContent = video.muted ? '🔇' : '🔊';
+        });
+        // Set initial icon state
+        icon.textContent = video.muted ? '🔇' : '🔊';
+    }
+});
 document.addEventListener('contextmenu', event => event.preventDefault()); 
 
 document.addEventListener('DOMContentLoaded', (event) => {
