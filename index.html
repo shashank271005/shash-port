@@ -381,19 +381,125 @@
 
             </div>
         </section>
- 
+
         <section class="custom-video-section">
-            <div style="position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-                
-                <video class="custom-video-bg" autoplay loop muted playsinline tabindex="-1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+            <div
+                style="position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+
+                <video class="custom-video-bg" autoplay loop muted playsinline tabindex="-1"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
                     <source src="img/intro-bg.mov" type="video/mp4">
                 </video>
-                
-                <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                    <video class="custom-video-player" id="mainCustomVideo" autoplay loop muted playsinline poster="img/cover.jpg" style="width: 800px; height: 450px; max-width: 98vw; max-height: 75vh; border-radius: 18px;"><source src="img/port-intro-horizontal-hd.mov" type="video/mp4"></video>
-                    <button class="mute-toggle-btn glassy-btn" id="muteToggleBtn" aria-label="Mute/Unmute" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+
+                <div
+                    style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <video class="custom-video-player" id="mainCustomVideo" autoplay loop muted playsinline
+                        poster="img/cover.jpg"
+                        style="width: 800px; height: 450px; max-width: 98vw; max-height: 75vh; border-radius: 18px;">
+                        <source src="img/port-intro-horizontal-hd.mov" type="video/mp4">
+                    </video>
+                    <button class="mute-toggle-btn glassy-btn" id="muteToggleBtn" aria-label="Mute/Unmute"
+                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                         <span id="muteIcon">🔇</span>
                     </button>
+                </div>
+            </div>
+        </section>
+        <section class="feature-tabs-section">
+            <div class="feature-tabs-header">
+                <div class="feature-tabs-row">
+                    <span class="feature-tab active">Townhall'25</span>
+                    <span class="feature-tab">Eniac'25</span>
+                    <span class="feature-tab">Rush Hour</span>
+                </div>
+                <div class="feature-tab-description">
+                    <p>Bring your own assets, or generate them in Flow. Then easily manage and reference them as you
+                        start to generate clips.</p>
+                </div>
+            </div>
+            <div class="feature-tabs-cards">
+                <!-- Townhall'25 Tab Card -->
+                <div class="feature-tab-card feature-tab-card-0 active">
+                    <div class="feature-card-scroll">
+                        <div class="feature-card-scroll-inner">
+                            <div class="feature-card-item">
+                                <img src="https://phg7ih4ayg.ucarecd.net/da6d1176-cd1b-437f-804c-6db3f4b99fe4/1746387662048.jpg"
+                                    alt="Consistent 1" />
+                            </div>
+                            <div class="feature-card-item">
+                                <div style="position: relative; width: 100%; height: 100%;">
+                                    <video class="feature-card-video" src="img/townhall-5.mov"
+                                        poster="img/townhall-5.jpg" playsinline autoplay muted loop
+                                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;"></video>
+                                    <button class="feature-card-mute-btn glassy-btn" aria-label="Mute/Unmute"
+                                        style="position: absolute; bottom: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px) saturate(180%); background: rgba(255,255,255,0.18); border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.12); cursor: pointer; z-index: 2;">
+                                        <span class="mute-icon" style="font-size: 18px; color: #fff;">🔇</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="https://phg7ih4ayg.ucarecd.net/c2f3e427-a89d-4527-b500-7d75d839f8d8/1746382583684.jpg"
+                                    alt="Consistent 2" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/townhall-3.jpg" alt="Consistent 3" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/townhall-4.jpg" alt="Consistent 2" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Rush Hour Tab Card -->
+                <div class="feature-tab-card feature-tab-card-1">
+                    <div class="feature-card-scroll">
+                        <div class="feature-card-scroll-inner">
+                            <div class="feature-card-item">
+                                <img src="img/eniac-1.jpeg" alt="Cinematic 1" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/eniac-2.jpg" alt="Cinematic 2" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/eniac-3.jpg" alt="Cinematic 3" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/eniac-4.jpg" alt="Cinematic 1" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/eniac-5.jpg" alt="Cinematic 2" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/eniac-6.jpeg" alt="Cinematic 3" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Eniac'25 Tab Card -->
+                <div class="feature-tab-card feature-tab-card-2">
+                    <div class="feature-card-scroll">
+                        <div class="feature-card-scroll-inner">
+                            <div class="feature-card-item">
+                                <img src="img/rush-4.jpg" alt="Seamless 1" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/rush-2.jpg" alt="Seamless 2" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/rush-3.jpg" alt="Seamless 3" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/rush-5.jpg" alt="Seamless 4" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/rush-1.jpg" alt="Seamless 5" />
+                            </div>
+                            <div class="feature-card-item">
+                                <img src="img/rush-6.jpg" alt="Seamless 6" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
