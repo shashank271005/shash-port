@@ -1,3 +1,127 @@
+// Mute/unmute logic for feature card video mute button
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.feature-card-mute-btn').forEach(function(btn) {
+        const card = btn.closest('.feature-card-item');
+        const video = card ? card.querySelector('video') : null;
+        if (!video) return;
+        btn.addEventListener('click', function() {
+            if (video.muted) {
+                video.muted = false;
+                btn.querySelector('.mute-icon').textContent = '🔊';
+            } else {
+                video.muted = true;
+                btn.querySelector('.mute-icon').textContent = '🔇';
+            }
+        });
+    });
+});
+// Feature Tabs Interactivity
+document.addEventListener('DOMContentLoaded', function () {
+    const tabs = document.querySelectorAll('.feature-tab');
+    const desc = document.querySelector('.feature-tab-description p');
+    const tabDetails = [
+        {
+            title: 'Consistent',
+            desc: 'Bring your own assets, or generate them in Flow. Then easily manage and reference them as you start to generate clips.'
+        },
+        {
+            title: 'Seamless',
+            desc: 'Effortlessly move between creative steps. Flow keeps your work in sync, so you never lose momentum or inspiration.'
+        },
+        {
+            title: 'Cinematic',
+            desc: 'Unlock cinematic quality with built-in effects and transitions. Every clip feels like a scene from a movie.'
+        }
+    ];
+
+    const cards = document.querySelectorAll('.feature-tab-card');
+    const scrollAreas = document.querySelectorAll('.feature-card-scroll');
+    let currentTab = 0;
+
+    function updateTabs(activeIdx) {
+        tabs.forEach((tab, idx) => {
+            if (idx === activeIdx) {
+                tab.classList.add('active');
+                tab.style.filter = 'none';
+                tab.style.opacity = '1';
+            } else {
+                tab.classList.remove('active');
+                tab.style.filter = 'blur(2.5px)';
+                tab.style.opacity = '0.7';
+            }
+        });
+        desc.textContent = tabDetails[activeIdx].desc;
+        cards.forEach((card, idx) => {
+            if (idx === activeIdx) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
+        currentTab = activeIdx;
+    }
+
+
+    tabs.forEach((tab, idx) => {
+        tab.addEventListener('click', function () {
+            updateTabs(idx);
+        });
+        tab.addEventListener('mouseenter', function () {
+            if (!tab.classList.contains('active')) {
+                tab.style.filter = 'blur(0.5px)';
+                tab.style.opacity = '0.95';
+            }
+        });
+        tab.addEventListener('mouseleave', function () {
+            if (!tab.classList.contains('active')) {
+                tab.style.filter = 'blur(2.5px)';
+                tab.style.opacity = '0.7';
+            }
+        });
+    });
+
+    // Enable section switching via continuous scroll
+    scrollAreas.forEach((area, idx) => {
+        let isSwitching = false;
+        area.addEventListener('wheel', function (e) {
+            if (!cards[idx].classList.contains('active') || isSwitching) return;
+            const maxScroll = area.scrollWidth - area.clientWidth;
+            if (e.deltaX > 40 && area.scrollLeft >= maxScroll - 2 && idx < tabs.length - 1) {
+                isSwitching = true;
+                // Fade out current
+                area.style.opacity = '0';
+                setTimeout(() => {
+                    updateTabs(idx + 1);
+                    scrollAreas[idx + 1].scrollTo({ left: 0, behavior: 'smooth' });
+                    scrollAreas[idx + 1].style.opacity = '0';
+                    setTimeout(() => {
+                        scrollAreas[idx + 1].style.opacity = '1';
+                        isSwitching = false;
+                    }, 350);
+                }, 350);
+                setTimeout(() => { area.style.opacity = '1'; }, 700);
+                e.preventDefault();
+            } else if (e.deltaX < -40 && area.scrollLeft <= 2 && idx > 0) {
+                isSwitching = true;
+                area.style.opacity = '0';
+                setTimeout(() => {
+                    updateTabs(idx - 1);
+                    scrollAreas[idx - 1].scrollTo({ left: scrollAreas[idx - 1].scrollWidth, behavior: 'smooth' });
+                    scrollAreas[idx - 1].style.opacity = '0';
+                    setTimeout(() => {
+                        scrollAreas[idx - 1].style.opacity = '1';
+                        isSwitching = false;
+                    }, 350);
+                }, 350);
+                setTimeout(() => { area.style.opacity = '1'; }, 700);
+                e.preventDefault();
+            }
+        }, { passive: false });
+    });
+
+    // Ensure initial state is correct
+    updateTabs(0);
+});
 // Custom mute/unmute for main custom video
 document.addEventListener('DOMContentLoaded', function () {
     const video = document.getElementById('mainCustomVideo');
