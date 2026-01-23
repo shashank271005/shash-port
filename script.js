@@ -21,16 +21,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const desc = document.querySelector('.feature-tab-description p');
     const tabDetails = [
         {
-            title: 'Consistent',
-            desc: 'Bring your own assets, or generate them in Flow. Then easily manage and reference them as you start to generate clips.'
+            title: 'Townhall Mentor',
+            desc: 'At Townhall’25 by Big Data Centre of Excellence, I transitioned from learner to mentor, co-leading a UI/UX design session and guiding juniors through hands-on, user-first design thinking.'
         },
         {
-            title: 'Seamless',
-            desc: 'Effortlessly move between creative steps. Flow keeps your work in sync, so you never lose momentum or inspiration.'
+            title: 'Recruitment Panelist',
+            desc: 'At ENIAC’25, the recruitment drive of Big Data Centre of Excellence, I actively participated in the personal interview process, gaining first-hand experience in technical evaluation, communication, and structured recruitment workflows.'
         },
         {
-            title: 'Cinematic',
-            desc: 'Unlock cinematic quality with built-in effects and transitions. Every clip feels like a scene from a movie.'
+            title: 'RushHour 2.0 CP Event',
+            desc: 'Organized RushHour 2.0 CP event with 400+ participants, developing real-time tracking and automated elimination pipelines to create an interview-intensive competitive environment.'
         }
     ];
 

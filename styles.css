@@ -131,7 +131,7 @@
 .feature-tabs-section {
     width: 100vw;
     max-width: 100vw;
-    min-height: 340px;
+    min-height: 540px;
     background: linear-gradient(180deg, rgba(40,32,22,0.15) 0%, rgba(20,16,10,0.85) 100%);
     display: flex;
     flex-direction: column;
@@ -188,13 +188,14 @@
 
 .feature-tab-description {
     margin-top: 24px;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: #fff;
     font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
     font-weight: 400;
     max-width: 900px;
     min-height: 80px;
     transition: opacity 0.3s;
+    opacity: 0.6;
 }
 
 @media (max-width: 900px) {
@@ -920,7 +921,7 @@ body::-webkit-scrollbar {
 }
 
 .icons img:hover {
-    opacity: 1;
+    opacity: 0.65;
 
 }
 
