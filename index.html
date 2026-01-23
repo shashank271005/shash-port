@@ -381,17 +381,17 @@
 
             </div>
         </section>
-        <!-- Custom Video Player Section (Above RushHour) -->
+ 
         <section class="custom-video-section">
-            <div class="custom-video-wrapper">
-                                <video class="custom-video-bg" autoplay loop muted playsinline tabindex="-1">
-                                    <source src="img/port-intro-horizontal-hd.mov" type="video/mp4">
-                                </video>
-                <div class="custom-video-container">
-                    <video class="custom-video-player" id="mainCustomVideo" autoplay loop muted playsinline poster="img/cover.jpg">
-                        <source src="img/port-intro-horizontal-hd.mov" type="video/mp4">
-                    </video>
-                    <button class="mute-toggle-btn glassy-btn" id="muteToggleBtn" aria-label="Mute/Unmute">
+            <div style="position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                
+                <video class="custom-video-bg" autoplay loop muted playsinline tabindex="-1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+                    <source src="img/intro-bg.mov" type="video/mp4">
+                </video>
+                
+                <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <video class="custom-video-player" id="mainCustomVideo" autoplay loop muted playsinline poster="img/cover.jpg" style="width: 800px; height: 450px; max-width: 98vw; max-height: 75vh; border-radius: 18px;"><source src="img/port-intro-horizontal-hd.mov" type="video/mp4"></video>
+                    <button class="mute-toggle-btn glassy-btn" id="muteToggleBtn" aria-label="Mute/Unmute" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                         <span id="muteIcon">🔇</span>
                     </button>
                 </div>
