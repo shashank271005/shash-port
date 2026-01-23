@@ -70,19 +70,25 @@
     -ms-overflow-style: none;
 }
 
-/* Align first card under main content for desktop */
-.feature-tab-card-0 .feature-card-scroll {
+/* Align first card under main content for all feature tabs */
+.feature-tab-card-0 .feature-card-scroll,
+.feature-tab-card-1 .feature-card-scroll,
+.feature-tab-card-2 .feature-card-scroll {
     padding-left: 7vw;
 }
 
 @media (max-width: 900px) {
-    .feature-tab-card-0 .feature-card-scroll {
+    .feature-tab-card-0 .feature-card-scroll,
+    .feature-tab-card-1 .feature-card-scroll,
+    .feature-tab-card-2 .feature-card-scroll {
         padding-left: 4vw;
     }
 }
 
 @media (max-width: 600px) {
-    .feature-tab-card-0 .feature-card-scroll {
+    .feature-tab-card-0 .feature-card-scroll,
+    .feature-tab-card-1 .feature-card-scroll,
+    .feature-tab-card-2 .feature-card-scroll {
         padding-left: 2vw;
     }
 }

@@ -80,44 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Enable section switching via continuous scroll
-    scrollAreas.forEach((area, idx) => {
-        let isSwitching = false;
-        area.addEventListener('wheel', function (e) {
-            if (!cards[idx].classList.contains('active') || isSwitching) return;
-            const maxScroll = area.scrollWidth - area.clientWidth;
-            if (e.deltaX > 40 && area.scrollLeft >= maxScroll - 2 && idx < tabs.length - 1) {
-                isSwitching = true;
-                // Fade out current
-                area.style.opacity = '0';
-                setTimeout(() => {
-                    updateTabs(idx + 1);
-                    scrollAreas[idx + 1].scrollTo({ left: 0, behavior: 'smooth' });
-                    scrollAreas[idx + 1].style.opacity = '0';
-                    setTimeout(() => {
-                        scrollAreas[idx + 1].style.opacity = '1';
-                        isSwitching = false;
-                    }, 350);
-                }, 350);
-                setTimeout(() => { area.style.opacity = '1'; }, 700);
-                e.preventDefault();
-            } else if (e.deltaX < -40 && area.scrollLeft <= 2 && idx > 0) {
-                isSwitching = true;
-                area.style.opacity = '0';
-                setTimeout(() => {
-                    updateTabs(idx - 1);
-                    scrollAreas[idx - 1].scrollTo({ left: scrollAreas[idx - 1].scrollWidth, behavior: 'smooth' });
-                    scrollAreas[idx - 1].style.opacity = '0';
-                    setTimeout(() => {
-                        scrollAreas[idx - 1].style.opacity = '1';
-                        isSwitching = false;
-                    }, 350);
-                }, 350);
-                setTimeout(() => { area.style.opacity = '1'; }, 700);
-                e.preventDefault();
-            }
-        }, { passive: false });
-    });
+    // Removed scroll-based tab switching. Tabs now only switch on click.
 
     // Ensure initial state is correct
     updateTabs(0);
