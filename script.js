@@ -9,6 +9,13 @@ function muteAllExcept(currentMedia) {
             }
         }
     });
+    // Also handle main custom video mute icon
+    const mainCustomVideo = document.getElementById('mainCustomVideo');
+    const muteIcon = document.getElementById('muteIcon');
+    if (mainCustomVideo && mainCustomVideo !== currentMedia) {
+        mainCustomVideo.muted = true;
+        if (muteIcon) muteIcon.textContent = '🔇';
+    }
     document.querySelectorAll('audio').forEach(audio => {
         if (audio !== currentMedia) {
             audio.pause();
