@@ -139,6 +139,33 @@
 
             </div>
         </section>
+                        <script>
+                        // Mutual dimming for team headings
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const wraps = [
+                                document.querySelector('.bdcoe-hover-wrap'),
+                                document.querySelector('.examplify-hover-wrap'),
+                                document.querySelector('.graphic-hover-wrap')
+                            ];
+                            const headings = [
+                                document.querySelector('.bdcoe-web-design'),
+                                document.querySelector('.examplify-design'),
+                                document.querySelector('.graphic-designs')
+                            ];
+                            wraps.forEach((wrap, idx) => {
+                                if (!wrap) return;
+                                wrap.addEventListener('mouseenter', () => {
+                                    headings.forEach((h, i) => {
+                                        if (i !== idx && h) h.style.opacity = '0.3';
+                                        else if (h) h.style.opacity = '1';
+                                    });
+                                });
+                                wrap.addEventListener('mouseleave', () => {
+                                    headings.forEach(h => { if (h) h.style.opacity = '1'; });
+                                });
+                            });
+                        });
+                        </script>
         <section class="hero-content-section">
             <div class="hero-content-2">
                 <h2 class="section-title">Crafting Digital Experiences</h2>
@@ -508,7 +535,7 @@
                             <div class="feature-card-item">
                                 <div style="position: relative; width: 100%; height: 100%;">
                                     <video class="feature-card-video" src="img/rushhour-postcredit.mp4"
-                                        poster="img/rushhour-postcredit.mov" playsinline autoplay muted loop
+                                        poster="img/rushhour-postcredit.mp4" playsinline autoplay muted loop
                                         style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;"></video>
                                     <button class="feature-card-mute-btn glassy-btn" aria-label="Mute/Unmute"
                                         style="position: absolute; bottom: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px) saturate(180%); background: rgba(255,255,255,0.18); border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.12); cursor: pointer; z-index: 2;">
@@ -540,19 +567,28 @@
         <section class="team-section">
             <div class="team-names" style="max-width:100vw;">
                 <div style="margin-bottom:3vw;">
-                    <span
-                        style="font-family:'Google Sans', Arial, sans-serif; font-size:1.35vw; font-weight:400; opacity:0.85;">See
-                        My product designs</span>
+                    <span style="font-family:'Google Sans', Arial, sans-serif; font-size:1.35vw; font-weight:400; opacity:0.85;">See My product designs</span>
                 </div>
-                <h2
-                    style="font-family:'Google Sans', Arial, sans-serif; font-size:6vw; font-weight:400; margin:0 0 2vw 0; letter-spacing:-2px;">
-                    Bdcoe Web-design</h2>
-                <h2
-                    style="font-family:'Google Sans', Arial, sans-serif; font-size:6vw; font-weight:400; margin:0 0 2vw 0; letter-spacing:-2px;">
-                    Examplify</h2>
-                <h2
-                    style="font-family:'Google Sans', Arial, sans-serif; font-size:6vw; font-weight:400; margin:0; letter-spacing:-2px;">
-                    Graphic Designs</h2>
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100vw; margin:0 auto;">
+                  <div class="bdcoe-hover-wrap" style="position:relative; display:flex; justify-content:center; align-items:center; width:fit-content;">
+                      <span class="bdcoe-pop-img" style="position:absolute; right:105%; top:50%; transform:translateY(-50%) scale(0.7); opacity:0; pointer-events:none; transition:opacity 0.3s, transform 0.3s; z-index:10;">
+                          <img src="img/meta.jpg" alt="Bdcoe Pop" style="width:27vw; max-width:500px; border-radius:2vw; box-shadow:0 8px 40px 0 rgba(0,0,0,0.25); background:#fff1; position:relative; left:18vw; top:11vw; border:none;" />
+                      </span>
+                      <h2 class="bdcoe-web-design" style="font-family:'Google Sans', Arial, sans-serif; font-size:6vw; font-weight:400; margin:0 0 2vw 0; letter-spacing:-2px; cursor:pointer; display:inline-block; text-align:center;">Bdcoe Web-design</h2>
+                  </div>
+                  <div class="examplify-hover-wrap" style="position:relative; display:flex; justify-content:center; align-items:center; width:fit-content;">
+                      <span class="examplify-pop-img" style="position:absolute; right:105%; top:50%; transform:translateY(-50%) scale(0.7); opacity:0; pointer-events:none; transition:opacity 0.3s, transform 0.3s; z-index:10;">
+                          <img src="img/eniac-1.jpeg" alt="Examplify Pop" style="width:27vw; max-width:500px; border-radius:2vw; box-shadow:0 8px 40px 0 rgba(0,0,0,0.25); background:#fff1; position:relative; left:18vw; top:11vw; border:none;" />
+                      </span>
+                      <h2 class="examplify-design" style="font-family:'Google Sans', Arial, sans-serif; font-size:6vw; font-weight:400; margin:0 0 2vw 0; letter-spacing:-2px; cursor:pointer; display:inline-block; text-align:center;">Examplify</h2>
+                  </div>
+                  <div class="graphic-hover-wrap" style="position:relative; display:flex; justify-content:center; align-items:center; width:fit-content;">
+                      <span class="graphic-pop-img" style="position:absolute; right:105%; top:50%; transform:translateY(-50%) scale(0.7); opacity:0; pointer-events:none; transition:opacity 0.3s, transform 0.3s; z-index:10;">
+                          <img src="img/eniac-2.jpg" alt="Graphic Designs Pop" style="width:27vw; max-width:500px; border-radius:2vw; box-shadow:0 8px 40px 0 rgba(0,0,0,0.25); background:#fff1; position:relative; left:18vw; top:11vw; border:none;" />
+                      </span>
+                      <h2 class="graphic-designs" style="font-family:'Google Sans', Arial, sans-serif; font-size:6vw; font-weight:400; margin:0; letter-spacing:-2px; cursor:pointer; display:inline-block; text-align:center;">Graphic Designs</h2>
+                  </div>
+                </div>
             </div>
         </section>
         <!-- RushHour 2.0 CP Showdown Section -->

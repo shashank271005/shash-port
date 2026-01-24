@@ -1,3 +1,67 @@
+/* Mutually dim other headings on hover (fixed for all cases) */
+.team-names > div:hover ~ .bdcoe-hover-wrap .bdcoe-web-design,
+.team-names > div:hover ~ .examplify-hover-wrap .examplify-design,
+.team-names > div:hover ~ .graphic-hover-wrap .graphic-designs {
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+.bdcoe-hover-wrap:hover .bdcoe-web-design,
+.examplify-hover-wrap:hover .examplify-design,
+.graphic-hover-wrap:hover .graphic-designs {
+    opacity: 1;
+}
+/* Examplify and Graphic Designs hover pop effect */
+.examplify-design:hover {
+    color: #f7b6e6 !important;
+    transition: color 0.3s;
+}
+.examplify-hover-wrap:hover .examplify-pop-img,
+.examplify-hover-wrap:focus .examplify-pop-img {
+    opacity: 1 !important;
+    transform: translateY(-50%) scale(1) !important;
+    pointer-events: auto;
+}
+.graphic-designs:hover {
+    color: #f7b6e6 !important;
+    transition: color 0.3s;
+}
+.graphic-hover-wrap:hover .graphic-pop-img,
+.graphic-hover-wrap:focus .graphic-pop-img {
+    opacity: 1 !important;
+    transform: translateY(-50%) scale(1) !important;
+    pointer-events: auto;
+}
+/* Dim other headings when Bdcoe Web-design is hovered */
+.bdcoe-hover-wrap:hover ~ h2,
+.bdcoe-hover-wrap:focus ~ h2 {
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+/* Simple Bdcoe Web-design hover effect */
+.bdcoe-web-design:hover {
+    color: #f7b6e6 !important;
+    transition: color 0.3s;
+}
+.bdcoe-hover-wrap:hover .bdcoe-pop-img,
+.bdcoe-hover-wrap:focus .bdcoe-pop-img {
+    opacity: 1 !important;
+    transform: translateY(-50%) scale(1) !important;
+    pointer-events: auto;
+}
+@media (max-width: 900px) {
+    .bdcoe-pop-img {
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+        top: 100% !important;
+        transform: translateY(0) scale(0.7) !important;
+        text-align: center;
+    }
+    .bdcoe-hover-wrap:hover .bdcoe-pop-img,
+    .bdcoe-hover-wrap:focus .bdcoe-pop-img {
+        transform: translateY(0) scale(1) !important;
+    }
+}
 @media (max-width: 400px) {
     .home {
         min-height: 100vh;
