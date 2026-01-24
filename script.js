@@ -1,3 +1,21 @@
+// Helper: mute all other media except the one being played
+function muteAllExcept(currentMedia) {
+    document.querySelectorAll('video').forEach(video => {
+        if (video !== currentMedia) {
+            video.muted = true;
+            const btn = video.closest('.feature-card-item')?.querySelector('.feature-card-mute-btn');
+            if (btn && btn.querySelector('.mute-icon')) {
+                btn.querySelector('.mute-icon').textContent = '🔇';
+            }
+        }
+    });
+    document.querySelectorAll('audio').forEach(audio => {
+        if (audio !== currentMedia) {
+            audio.pause();
+        }
+    });
+}
+
 // Mute/unmute logic for feature card video mute button
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.feature-card-mute-btn').forEach(function(btn) {
@@ -5,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const video = card ? card.querySelector('video') : null;
         if (!video) return;
         btn.addEventListener('click', function() {
+            muteAllExcept(video);
             if (video.muted) {
                 video.muted = false;
                 btn.querySelector('.mute-icon').textContent = '🔊';
@@ -12,6 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 video.muted = true;
                 btn.querySelector('.mute-icon').textContent = '🔇';
             }
+        });
+        video.addEventListener('play', function() {
+            muteAllExcept(video);
         });
     });
 });
@@ -302,6 +324,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     if (audioPlayer && playPauseButton) {
         playPauseButton.addEventListener('click', () => {
+            muteAllExcept(audioPlayer);
             if (audioPlayer.paused) {
                 audioPlayer.play();
                 playPauseIcon.src = 'img/pause.svg';
@@ -309,6 +332,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 audioPlayer.pause();
                 playPauseIcon.src = 'img/play.svg';
             }
+        });
+        audioPlayer.addEventListener('play', function() {
+            muteAllExcept(audioPlayer);
         });
     }
 
