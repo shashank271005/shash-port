@@ -16,11 +16,7 @@ function muteAllExcept(currentMedia) {
         mainCustomVideo.muted = true;
         if (muteIcon) muteIcon.textContent = '🔇';
     }
-    document.querySelectorAll('audio').forEach(audio => {
-        if (audio !== currentMedia) {
-            audio.pause();
-        }
-    });
+    // Do NOT pause audio elements (music player) automatically anymore
 }
 
 // Mute/unmute logic for feature card video mute button
