@@ -12,7 +12,7 @@
 }
 /* Examplify and Graphic Designs hover pop effect */
 .examplify-design:hover {
-    color: #f7b6e6 !important;
+    color: #00a6ff !important;
     transition: color 0.3s;
 }
 .examplify-hover-wrap:hover .examplify-pop-img,
@@ -22,7 +22,7 @@
     pointer-events: auto;
 }
 .graphic-designs:hover {
-    color: #f7b6e6 !important;
+    color: #f02c39 !important;
     transition: color 0.3s;
 }
 .graphic-hover-wrap:hover .graphic-pop-img,
@@ -39,7 +39,7 @@
 }
 /* Simple Bdcoe Web-design hover effect */
 .bdcoe-web-design:hover {
-    color: #f7b6e6 !important;
+    color: #ad41ff !important;
     transition: color 0.3s;
 }
 .bdcoe-hover-wrap:hover .bdcoe-pop-img,
