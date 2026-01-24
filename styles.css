@@ -195,7 +195,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
 }
 /* Examplify and Graphic Designs hover pop effect */
 .examplify-design:hover {
-    color: #00a6ff !important;
+    color: #1e82b7 !important;
     transition: color 0.3s;
 }
 .examplify-hover-wrap:hover .examplify-pop-img,
