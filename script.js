@@ -105,12 +105,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Removed scroll-based tab switching. Tabs now only switch on click.
+    
 
-    // Ensure initial state is correct
+    
     updateTabs(0);
 });
-// Custom mute/unmute for main custom video
+
 document.addEventListener('DOMContentLoaded', function () {
     const video = document.getElementById('mainCustomVideo');
     const btn = document.getElementById('muteToggleBtn');
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
             video.muted = !video.muted;
             icon.textContent = video.muted ? '🔇' : '🔊';
         });
-        // Set initial icon state
+        
         icon.textContent = video.muted ? '🔇' : '🔊';
     }
 });
@@ -604,14 +604,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let startX, startY, posX, posY;
 
         function dragStart(e) {
-            // Only allow dragging the top-most card (the last child in the DOM)
+            
             const topCard = imageStack.querySelector('.image-card:last-child');
             if (e.target.closest('.image-card') !== topCard) return;
 
             activeCard = topCard;
             isDragging = true;
             activeCard.classList.add('is-dragging');
-            activeCard.style.transition = 'none'; // Disable transition during drag for smoothness
+            activeCard.style.transition = 'none'; 
 
             startX = e.pageX || e.touches[0].pageX;
             startY = e.pageY || e.touches[0].pageY;
@@ -619,7 +619,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         function dragMove(e) {
             if (!isDragging || !activeCard) return;
-            e.preventDefault(); // Prevent scrolling while dragging on mobile
+            e.preventDefault(); 
 
             const currentX = e.pageX || e.touches[0].pageX;
             const currentY = e.pageY || e.touches[0].pageY;
@@ -627,7 +627,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             posX = currentX - startX;
             posY = currentY - startY;
 
-            // Apply transformation based on mouse movement
+            
             activeCard.style.transform = `translate(${posX}px, ${posY}px) rotate(${posX * 0.05}deg)`;
         }
 
@@ -636,28 +636,28 @@ document.addEventListener('DOMContentLoaded', (event) => {
             isDragging = false;
             activeCard.classList.remove('is-dragging');
             
-            // Re-enable transition for the snap-back or re-stack movement
+            
             activeCard.style.transition = 'transform 0.4s ease-out';
             
             const dragThreshold = activeCard.offsetWidth * 0.5; 
 
-            // If dragged far enough, move the card to the bottom of the stack (prepend in DOM)
+            
             if (Math.abs(posX) > dragThreshold) {
                 imageStack.prepend(activeCard);
             }
 
-            // Reset the inline transform style to let CSS nth-child rotations take over
+            
             activeCard.style.transform = '';
             
             activeCard = null; 
         }
 
-        // Desktop Events
+        
         imageStack.addEventListener('mousedown', dragStart);
         document.addEventListener('mousemove', dragMove);
         document.addEventListener('mouseup', dragEnd);
         
-        // Touch/Mobile Events
+        
         imageStack.addEventListener('touchstart', dragStart, { passive: true });
         document.addEventListener('touchmove', dragMove, { passive: false });
         document.addEventListener('touchend', dragEnd);
@@ -665,3 +665,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 });
+
+// Infinite horizontal loop for profile cards
+document.addEventListener('DOMContentLoaded', function () {
+        const wrapper = document.querySelector('.profile-cards-infinite-wrapper');
+        const container = document.querySelector('.profile-cards-container');
+        if (!wrapper || !container) return;
+
+        const cards = Array.from(container.children);
+        cards.forEach(card => {
+            const clone = card.cloneNode(true);
+            clone.classList.add('clone');
+            container.appendChild(clone);
+        });
+
+        let scrollAmount = 0;
+        let animationId;
+        function animate() {
+            scrollAmount += 1.1; 
+            if (scrollAmount >= container.scrollWidth / 2) {
+                scrollAmount = 0;
+            }
+            container.style.transform = `translateX(${-scrollAmount}px)`;
+            animationId = requestAnimationFrame(animate);
+        }
+
+        container.style.display = 'flex';
+        container.style.flexWrap = 'nowrap';
+        container.style.willChange = 'transform';
+        animate();
+    });
