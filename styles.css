@@ -1,3 +1,11 @@
+/* Remove default link color for project headings */
+a.bdcoe-link, a.examplify-link, a.graphic-link {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
+    color: inherit !important;
+}
 /* Mutually dim other headings on hover (fixed for all cases) */
 .team-names > div:hover ~ .bdcoe-hover-wrap .bdcoe-web-design,
 .team-names > div:hover ~ .examplify-hover-wrap .examplify-design,
