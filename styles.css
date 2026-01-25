@@ -1,4 +1,4 @@
-/* Remove grayscale on profile image hover */
+
 .profile-card:hover .profile-img {
     filter: none;
     transition: filter 0.3s;
