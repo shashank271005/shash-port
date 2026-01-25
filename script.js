@@ -695,3 +695,29 @@ document.addEventListener('DOMContentLoaded', function () {
         container.style.willChange = 'transform';
         animate();
     });
+
+    // Mutual dimming for team headings
+            document.addEventListener('DOMContentLoaded', function () {
+                const wraps = [
+                    document.querySelector('.bdcoe-hover-wrap'),
+                    document.querySelector('.examplify-hover-wrap'),
+                    document.querySelector('.graphic-hover-wrap')
+                ];
+                const headings = [
+                    document.querySelector('.bdcoe-web-design'),
+                    document.querySelector('.examplify-design'),
+                    document.querySelector('.graphic-designs')
+                ];
+                wraps.forEach((wrap, idx) => {
+                    if (!wrap) return;
+                    wrap.addEventListener('mouseenter', () => {
+                        headings.forEach((h, i) => {
+                            if (i !== idx && h) h.style.opacity = '0.3';
+                            else if (h) h.style.opacity = '1';
+                        });
+                    });
+                    wrap.addEventListener('mouseleave', () => {
+                        headings.forEach(h => { if (h) h.style.opacity = '1'; });
+                    });
+                });
+            });
