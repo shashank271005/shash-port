@@ -486,20 +486,20 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
     gap: 32px;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+
 .feature-card-scroll::-webkit-scrollbar {
     display: none;
 }
-/* Hide scrollbar for Firefox */
+
 .feature-card-scroll {
     scrollbar-width: none;
 }
-/* Hide scrollbar for IE, Edge */
+
 .feature-card-scroll {
     -ms-overflow-style: none;
 }
 
-/* Align first card under main content for all feature tabs */
+
 .feature-tab-card-0 .feature-card-scroll,
 .feature-tab-card-1 .feature-card-scroll,
 .feature-tab-card-2 .feature-card-scroll {
@@ -574,6 +574,10 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
     position: relative;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.feature-tabs-section::selection {
+    color: #23c8ff;
 }
 
 .feature-tabs-header {
