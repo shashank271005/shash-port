@@ -345,7 +345,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
 }
 
 .examplify-design:hover {
-    color: #1e82b7 !important;
+    color: #00b3ff !important;
     transition: color 0.3s;
 }
 .examplify-hover-wrap:hover .examplify-pop-img,
@@ -470,7 +470,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
     text-align: center;
     justify-content: center;
 }
-/* Glassy mute/unmute button for feature card video */
+
 .feature-card-mute-btn.glassy-btn {
     transition: background 0.2s, box-shadow 0.2s;
 }
@@ -478,7 +478,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
     background: rgba(255,255,255,0.32);
     box-shadow: 0 4px 16px rgba(0,0,0,0.18);
 }
-/* Feature Tabs Cards */
+
 .feature-tabs-cards {
     width: 100vw;
     margin-top: 24px;
@@ -516,7 +516,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
     scroll-behavior: smooth;
     padding: 32px 0 16px 0;
     position: relative;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none; 
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
     transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
@@ -737,7 +737,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
         border-radius: 18px;
     }
 }
-/* Blurred background video for custom video wrapper */
+
 .custom-video-bg {
     position: absolute;
     top: 0;
@@ -808,7 +808,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
     background: rgba(255,255,255,0.28);
     box-shadow: 0 8px 32px rgba(0,0,0,0.28);
 }
-/* Custom Video Player Section Styles */
+
 .custom-video-section {
     width: 100vw;
     height: 100vh;
@@ -880,8 +880,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
         border-radius: 18px;
     }
 }
-/* Event Showcase Section Styles */
-/* RushHour Section Base Styles */
+
 .RushHour-2 {
     display: flex;
     justify-content: center;
@@ -916,7 +915,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
     gap: 50px;
 }
 
-/* Text Content Styles */
+
 .RushHour-text {
     flex: 1;
     color: #fff;
@@ -973,7 +972,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
     color: #ffb14d;
 }
 
-/* Image Stack Interaction Styles */
+
 .RushHour-image {
     position: relative;
     width: 500px;
@@ -1006,12 +1005,11 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
     pointer-events: none;
 }
 
-/* Initial rotation for the stack effect */
+
 .image-card:nth-child(1) { transform: rotate(-5deg); z-index: 1; }
 .image-card:nth-child(2) { transform: rotate(3deg); z-index: 2; }
 .image-card:nth-child(3) { transform: rotate(-2deg); z-index: 3; }
 
-/* Hover animation to "fan out" the cards */
 .RushHour-image:hover .image-card:nth-child(1) {
     transform: translate(-30px, 0) rotate(-8deg);
 }
@@ -1022,7 +1020,7 @@ a.bdcoe-link:visited, a.examplify-link:visited, a.graphic-link:visited {
     transform: translate(30px, 0) rotate(8deg);
 }
 
-/* Responsive Media Queries */
+
 @media (max-width: 992px) {
     .RushHour-content {
         flex-direction: column;
