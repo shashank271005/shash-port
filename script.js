@@ -21,11 +21,11 @@ function muteAllExcept(currentMedia) {
 
 // Mute/unmute logic for feature card video mute button
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.feature-card-mute-btn').forEach(function(btn) {
+    document.querySelectorAll('.feature-card-mute-btn').forEach(function (btn) {
         const card = btn.closest('.feature-card-item');
         const video = card ? card.querySelector('video') : null;
         if (!video) return;
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             muteAllExcept(video);
             if (video.muted) {
                 video.muted = false;
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 btn.querySelector('.mute-icon').textContent = '🔇';
             }
         });
-        video.addEventListener('play', function() {
+        video.addEventListener('play', function () {
             muteAllExcept(video);
         });
     });
@@ -105,9 +105,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    
 
-    
+
+
     updateTabs(0);
 });
 
@@ -120,11 +120,11 @@ document.addEventListener('DOMContentLoaded', function () {
             video.muted = !video.muted;
             icon.textContent = video.muted ? '🔇' : '🔊';
         });
-        
+
         icon.textContent = video.muted ? '🔇' : '🔊';
     }
 });
-document.addEventListener('contextmenu', event => event.preventDefault()); 
+document.addEventListener('contextmenu', event => event.preventDefault());
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 playPauseIcon.src = 'img/play.svg';
             }
         });
-        audioPlayer.addEventListener('play', function() {
+        audioPlayer.addEventListener('play', function () {
             muteAllExcept(audioPlayer);
         });
     }
@@ -389,95 +389,95 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const section = document.getElementById('tech-stack-section');
         const wrapper = document.getElementById('tech-stack-wrapper');
         const items = wrapper ? Array.from(wrapper.querySelectorAll('.stack-item[style*="--i"]')) : [];
-        
+
         if (!section || items.length === 0) return;
 
         const TOTAL_ITEMS = items.length;
         const RADIUS = 300;
-        
-        const TOTAL_DURATION = 7000; 
-        
-        const DURATION_P1 = 2500; 
-        const DURATION_P2 = 2000; 
-        const DURATION_P3 = 2500; 
-        
-        const START_OFFSET = 300; 
+
+        const TOTAL_DURATION = 7000;
+
+        const DURATION_P1 = 2500;
+        const DURATION_P2 = 2000;
+        const DURATION_P3 = 2500;
+
+        const START_OFFSET = 300;
         const ITEM_SPACING = 120;
 
         const itemPositions = items.map((item) => {
-            const index = parseInt(item.style.getPropertyValue('--i')) - 1; 
+            const index = parseInt(item.style.getPropertyValue('--i')) - 1;
             const centerIndex = index - (TOTAL_ITEMS - 1) / 2;
 
             const angle = (centerIndex * 2 * Math.PI) / TOTAL_ITEMS;
-            
+
             const xCircle = RADIUS * Math.sin(angle);
-            
+
             const yCircle = RADIUS * Math.cos(angle) * -1;
-            
+
             const rotateCircle = angle * 180 / Math.PI;
 
-            
-            const xStart = centerIndex * ITEM_SPACING; 
-            const yStart = 0; 
+
+            const xStart = centerIndex * ITEM_SPACING;
+            const yStart = 0;
             const rotateStart = 0;
-            
+
             return { item, xStart, yStart, rotateStart, xCircle, yCircle, rotateCircle };
         });
 
         const updateAnimation = () => {
             const sectionTop = section.offsetTop;
             let scrollYRelative = window.scrollY - (sectionTop + START_OFFSET);
-            
+
             let currentX, currentY, currentRotate;
             let wrapperRotation = 0;
-            
-            
+
+
             if (scrollYRelative <= DURATION_P1) {
                 const phaseProgress = Math.min(1, scrollYRelative / DURATION_P1);
-                
-                
-                const easedProgress = 0.5 - Math.cos(phaseProgress * Math.PI) / 2; 
+
+
+                const easedProgress = 0.5 - Math.cos(phaseProgress * Math.PI) / 2;
 
                 itemPositions.forEach(pos => {
-                   
+
                     currentX = pos.xStart + (pos.xCircle - pos.xStart) * easedProgress;
                     currentY = pos.yStart + (pos.yCircle - pos.yStart) * easedProgress;
                     currentRotate = pos.rotateStart + (pos.rotateCircle - pos.rotateStart) * easedProgress;
-                    
+
                     pos.item.style.transform = `translate(-50%, -50%) translateX(${currentX}px) translateY(${currentY}px) rotate(${currentRotate}deg)`;
                 });
-                wrapperRotation = 0; 
-            } 
-           
+                wrapperRotation = 0;
+            }
+
             else if (scrollYRelative <= DURATION_P1 + DURATION_P2) {
                 const phaseScroll = scrollYRelative - DURATION_P1;
                 const phaseProgress = phaseScroll / DURATION_P2;
 
-                wrapperRotation = phaseProgress * 360; 
-                
+                wrapperRotation = phaseProgress * 360;
+
                 itemPositions.forEach(pos => {
-                  
+
                     pos.item.style.transform = `translate(-50%, -50%) translateX(${pos.xCircle}px) translateY(${pos.yCircle}px) rotate(${pos.rotateCircle}deg)`;
                 });
             }
-            
-            
-            else { 
+
+
+            else {
                 const phaseScroll = scrollYRelative - (DURATION_P1 + DURATION_P2);
                 const phaseProgress = phaseScroll / DURATION_P3;
-                
-                wrapperRotation = 360 + (phaseProgress * 180); 
-                
+
+                wrapperRotation = 360 + (phaseProgress * 180);
+
                 itemPositions.forEach(pos => {
-                   
+
                     pos.item.style.transform = `translate(-50%, -50%) translateX(${pos.xCircle}px) translateY(${pos.yCircle}px) rotate(${pos.rotateCircle}deg)`;
                 });
 
                 if (scrollYRelative >= TOTAL_DURATION) {
-                     wrapperRotation = 360 + 180; 
+                    wrapperRotation = 360 + 180;
                 }
             }
-            
+
             wrapper.style.transform = `rotateZ(${wrapperRotation}deg)`;
         };
 
@@ -492,15 +492,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const rightCard = document.querySelector('.design-card.right-card');
     const globeImg = rightCard ? rightCard.querySelector('.globe-img') : null;
     const labels = rightCard ? rightCard.querySelectorAll('.expertise-label') : [];
-    
+
     if (globeImg) {
         globeImg.style.transition = 'transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     }
 
     labels.forEach(label => {
         label.style.transition = 'opacity 0.4s ease-out, transform 0.6s ease-out';
-        label.style.opacity = 0; 
-        label.style.transform = 'translateY(10px)'; 
+        label.style.opacity = 0;
+        label.style.transform = 'translateY(10px)';
     });
 
     const animateDesignApproach = (card, isEntering) => {
@@ -516,16 +516,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 setTimeout(() => {
                     line.style.transform = 'translateX(0)';
                     line.style.opacity = 1;
-                }, delay); 
+                }, delay);
             } else {
                 setTimeout(() => {
                     line.style.transform = 'translateX(-100%)';
                     line.style.opacity = 0;
-                }, delay); 
+                }, delay);
             }
         });
     };
-    
+
     const animateExpertise = (card, isEntering) => {
         const globeImg = card.querySelector('.globe-img');
         const labels = card.querySelectorAll('.expertise-label');
@@ -538,30 +538,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (globeImg) {
             globeImg.style.transform = isEntering ? 'rotate(360deg)' : 'rotate(0deg)';
         }
-        
+
         labels.forEach((label, index) => {
-            const delay = isEntering ? index * 150 : (labels.length - 1 - index) * 50; 
-            
+            const delay = isEntering ? index * 150 : (labels.length - 1 - index) * 50;
+
             if (isEntering) {
                 setTimeout(() => {
                     label.style.opacity = 1;
-                    label.style.transform = 'translateY(0)'; 
+                    label.style.transform = 'translateY(0)';
                 }, delay);
             } else {
                 setTimeout(() => {
                     label.style.opacity = 0;
-                    label.style.transform = 'translateY(10px)'; 
+                    label.style.transform = 'translateY(10px)';
                 }, delay);
             }
         });
     };
-    
+
     designCards.forEach(card => {
-        
+
         const titleElement = card.querySelector('.card-title');
 
         card.addEventListener('mouseenter', () => {
-            
+
             if (titleElement) {
                 titleElement.classList.add('is-hovered');
             }
@@ -573,9 +573,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
 
-       
+
         card.addEventListener('mouseleave', () => {
-            
+
             if (titleElement) {
                 titleElement.classList.remove('is-hovered');
             }
@@ -595,103 +595,132 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
     document.addEventListener('DOMContentLoaded', function () {
-    /* ---------------- DRAGGABLE IMAGE STACK (RE-STACKING LOGIC) ---------------- */
-    const imageStack = document.querySelector('.RushHour-image');
-    
-    if (imageStack) {
-        let isDragging = false;
-        let activeCard = null;
-        let startX, startY, posX, posY;
+        /* ---------------- DRAGGABLE IMAGE STACK (RE-STACKING LOGIC) ---------------- */
+        const imageStack = document.querySelector('.RushHour-image');
 
-        function dragStart(e) {
-            
-            const topCard = imageStack.querySelector('.image-card:last-child');
-            if (e.target.closest('.image-card') !== topCard) return;
+        if (imageStack) {
+            let isDragging = false;
+            let activeCard = null;
+            let startX, startY, posX, posY;
 
-            activeCard = topCard;
-            isDragging = true;
-            activeCard.classList.add('is-dragging');
-            activeCard.style.transition = 'none'; 
+            function dragStart(e) {
 
-            startX = e.pageX || e.touches[0].pageX;
-            startY = e.pageY || e.touches[0].pageY;
-        }
+                const topCard = imageStack.querySelector('.image-card:last-child');
+                if (e.target.closest('.image-card') !== topCard) return;
 
-        function dragMove(e) {
-            if (!isDragging || !activeCard) return;
-            e.preventDefault(); 
+                activeCard = topCard;
+                isDragging = true;
+                activeCard.classList.add('is-dragging');
+                activeCard.style.transition = 'none';
 
-            const currentX = e.pageX || e.touches[0].pageX;
-            const currentY = e.pageY || e.touches[0].pageY;
-            
-            posX = currentX - startX;
-            posY = currentY - startY;
-
-            
-            activeCard.style.transform = `translate(${posX}px, ${posY}px) rotate(${posX * 0.05}deg)`;
-        }
-
-        function dragEnd(e) {
-            if (!isDragging || !activeCard) return;
-            isDragging = false;
-            activeCard.classList.remove('is-dragging');
-            
-            
-            activeCard.style.transition = 'transform 0.4s ease-out';
-            
-            const dragThreshold = activeCard.offsetWidth * 0.5; 
-
-            
-            if (Math.abs(posX) > dragThreshold) {
-                imageStack.prepend(activeCard);
+                startX = e.pageX || e.touches[0].pageX;
+                startY = e.pageY || e.touches[0].pageY;
             }
 
-            
-            activeCard.style.transform = '';
-            
-            activeCard = null; 
-        }
+            function dragMove(e) {
+                if (!isDragging || !activeCard) return;
+                e.preventDefault();
 
-        
-        imageStack.addEventListener('mousedown', dragStart);
-        document.addEventListener('mousemove', dragMove);
-        document.addEventListener('mouseup', dragEnd);
-        
-        
-        imageStack.addEventListener('touchstart', dragStart, { passive: true });
-        document.addEventListener('touchmove', dragMove, { passive: false });
-        document.addEventListener('touchend', dragEnd);
-    }
-});
+                const currentX = e.pageX || e.touches[0].pageX;
+                const currentY = e.pageY || e.touches[0].pageY;
+
+                posX = currentX - startX;
+                posY = currentY - startY;
+
+
+                activeCard.style.transform = `translate(${posX}px, ${posY}px) rotate(${posX * 0.05}deg)`;
+            }
+
+            function dragEnd(e) {
+                if (!isDragging || !activeCard) return;
+                isDragging = false;
+                activeCard.classList.remove('is-dragging');
+
+
+                activeCard.style.transition = 'transform 0.4s ease-out';
+
+                const dragThreshold = activeCard.offsetWidth * 0.5;
+
+
+                if (Math.abs(posX) > dragThreshold) {
+                    imageStack.prepend(activeCard);
+                }
+
+
+                activeCard.style.transform = '';
+
+                activeCard = null;
+            }
+
+
+            imageStack.addEventListener('mousedown', dragStart);
+            document.addEventListener('mousemove', dragMove);
+            document.addEventListener('mouseup', dragEnd);
+
+
+            imageStack.addEventListener('touchstart', dragStart, { passive: true });
+            document.addEventListener('touchmove', dragMove, { passive: false });
+            document.addEventListener('touchend', dragEnd);
+        }
+    });
 
 });
 
 // Infinite horizontal loop for profile cards
 document.addEventListener('DOMContentLoaded', function () {
-        const wrapper = document.querySelector('.profile-cards-infinite-wrapper');
-        const container = document.querySelector('.profile-cards-container');
-        if (!wrapper || !container) return;
+    const wrapper = document.querySelector('.profile-cards-infinite-wrapper');
+    const container = document.querySelector('.profile-cards-container');
+    if (!wrapper || !container) return;
 
-        const cards = Array.from(container.children);
-        cards.forEach(card => {
-            const clone = card.cloneNode(true);
-            clone.classList.add('clone');
-            container.appendChild(clone);
-        });
-
-        let scrollAmount = 0;
-        let animationId;
-        function animate() {
-            scrollAmount += 1.1; 
-            if (scrollAmount >= container.scrollWidth / 2) {
-                scrollAmount = 0;
-            }
-            container.style.transform = `translateX(${-scrollAmount}px)`;
-            animationId = requestAnimationFrame(animate);
-        }
-
-        container.style.display = 'flex';
-        container.style.flexWrap = 'nowrap';
-        container.style.willChange = 'transform';
-        animate();
+    const cards = Array.from(container.children);
+    cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.add('clone');
+        container.appendChild(clone);
     });
+
+    let scrollAmount = 0;
+    let animationId;
+    function animate() {
+        scrollAmount += 1.1;
+        if (scrollAmount >= container.scrollWidth / 2) {
+            scrollAmount = 0;
+        }
+        container.style.transform = `translateX(${-scrollAmount}px)`;
+        animationId = requestAnimationFrame(animate);
+    }
+
+    container.style.display = 'flex';
+    container.style.flexWrap = 'nowrap';
+    container.style.willChange = 'transform';
+    animate();
+
+    const initPortfolioVideoScroll = () => {
+        const video = document.getElementById('portfolio-video');
+        const section = document.querySelector('.portfolio-section');
+        if (!video || !section) return;
+
+        const updateVideoTime = () => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const viewportHeight = window.innerHeight;
+
+            const scrollStart = sectionTop;
+            const scrollEnd = sectionTop + sectionHeight - viewportHeight;
+            const scrolled = window.scrollY;
+
+            let progress = (scrolled - scrollStart) / (scrollEnd - scrollStart);
+            progress = Math.max(0, Math.min(1, progress));
+
+            if (video.duration && isFinite(video.duration)) {
+                video.currentTime = video.duration * progress;
+            }
+        };
+
+        window.addEventListener('scroll', updateVideoTime);
+        video.addEventListener('loadedmetadata', updateVideoTime);
+        if (video.readyState >= 1) updateVideoTime();
+    };
+
+    initPortfolioVideoScroll();
+});
